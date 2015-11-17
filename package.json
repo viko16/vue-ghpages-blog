@@ -1,0 +1,44 @@
+{
+  "name": "vue-ghpages-blog",
+  "version": "0.0.1",
+  "description": "A blog based on Github pages by vue.js + webpack",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --quiet",
+    "build": "NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "keywords": [
+    "blog",
+    "github",
+    "vuejs",
+    "webpack"
+  ],
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "marked": "^0.3.5",
+    "vue": "^1.0.7"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.33",
+    "babel-loader": "^5.3.3",
+    "babel-runtime": "^5.8.29",
+    "css-loader": "^0.21.0",
+    "style-loader": "^0.13.0",
+    "vue-hot-reload-api": "^1.2.1",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^6.0.5",
+    "vue-router": "^0.7.5",
+    "webpack": "^1.12.3",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "author": "viko16 <16viko@github.com> (https://github.com/viko16)",
+  "homepage": "https://github.com/viko16/vue-ghpages-blog",
+  "bugs": {
+    "url" : "https://github.com/viko16/vue-ghpages-blog/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:viko16/vue-ghpages-blog.git"
+  },
+  "license": "MIT"
+}
