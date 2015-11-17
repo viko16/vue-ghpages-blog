@@ -4,7 +4,7 @@
 
 		<ul>
 			<li v-for="item in items | orderBy 'name' -1">
-				<a v-link="{ name: 'post', params: { title: item.name } }">{{ item.name | cleanTitle }}</a>
+				<a v-link="{ name: 'post', params: { title: encodeURI(item.name) }}">{{ item.name | cleanTitle }}</a>
 			</li>
 		</ul>
 

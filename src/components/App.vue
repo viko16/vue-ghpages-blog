@@ -45,6 +45,10 @@
 		color: #222;
 	}
 
+	header a:visited {
+		color: #222;
+	}
+
 	header a:hover {
 		color: #08c;
 		text-decoration: none;
