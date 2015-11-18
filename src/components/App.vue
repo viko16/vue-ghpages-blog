@@ -23,9 +23,9 @@
 
 <style lang="less">
 
-    html, body {
+    body {
         font-family: "PT Sans","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         -webkit-font-smoothing: antialiased;
         -webkit-text-size-adjust: none;
         color: #555;
@@ -42,10 +42,10 @@
         }
 
         a {
-            &, &:link, &:visited {
+            &, &:link, &:visited, &:active, &.focus {
                 color: #222;
             }
-            &:hover, &:active {
+            &:hover {
                 color: #08c;
                 text-decoration: none;
             }
@@ -117,6 +117,13 @@
             color: #e60900;
             text-decoration: underline;
         }
+    }
+
+    .publish-date {
+        float: right;
+        font-size: .8rem;
+        line-height: 4;
+        vertical-align: middle;
     }
 
 </style>

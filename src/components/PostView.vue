@@ -4,7 +4,7 @@
 
         <h1 id="title">
             {{ title | onlyTitle }}
-            <span>{{ title | onlyPublishDate }}</span>
+            <span class="publish-date">{{ title | onlyPublishDate }}</span>
         </h1>
 
         <article
@@ -66,18 +66,11 @@
 <style lang="less">
 
     .post-view {
-        margin: 4rem 0;
+        margin: 3rem 0;
 
         #title {
-            line-height: 1;
-            margin-bottom: 3rem;
-
-            span {
-                float: right;
-                font-size: .8rem;
-                line-height: 2;
-                vertical-align: middle;
-            }
+            line-height: 2;
+            margin-bottom: 2rem;
         }
 
         p {

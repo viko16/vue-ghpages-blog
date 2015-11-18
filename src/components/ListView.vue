@@ -6,13 +6,14 @@
         <h2 v-if="!items.length">Loading...🐹</h2>
 
         <!-- loaded -->
-        <ul v-if="items.length">
+        <ol v-if="items.length">
             <li v-for="item in items | orderBy 'name' -1" transition>
                 <a v-link="{ name: 'post', params: { title: encodeURI(item.name) }}">
-                    {{ item.name | cleanTitle }}
+                    {{ item.name | onlyTitle }}
                 </a>
+                <span class="publish-date">{{ item.name | onlyPublishDate }}</span>
             </li>
-        </ul>
+        </ol>
 
     </div>
 
@@ -21,14 +22,15 @@
 <script>
 
     import store from '../store';
-    import { cleanTitle } from '../filters';
+    import { onlyTitle, onlyPublishDate } from '../filters';
 
     export default {
 
         name: 'ListView',
 
         filters: {
-            cleanTitle
+            onlyTitle,
+            onlyPublishDate
         },
 
         data () {
@@ -51,3 +53,18 @@
     }
 
 </script>
+
+<style lang="less">
+
+    .list-view {
+        li {
+            line-height: 3.5;
+            height: 3.5rem;
+
+            a {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+</style>
