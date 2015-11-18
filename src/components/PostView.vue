@@ -95,17 +95,17 @@
             line-height: 2.2;
             display: block;
             overflow: auto;
-            background: #F8F8F8;
+            background: #fbfbfb;
 
             code {
-                background-color: none;
+                background: none;
             }
         }
 
         code {
             border: none;
             word-wrap: break-word;
-            color: #c7254e;
+            color: #d14;
             background-color: #f9f2f4;
         }
 
