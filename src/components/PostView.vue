@@ -9,7 +9,8 @@
 
         <article
             class="post-content"
-            v-html="content | marked">
+            v-html="content | marked"
+            transition>
         </article>
 
     </div>
@@ -33,9 +34,9 @@
         name: 'PostView',
 
         filters: {
-            marked: marked,
-            onlyTitle: onlyTitle,
-            onlyPublishDate: onlyPublishDate
+            marked,
+            onlyTitle,
+            onlyPublishDate
         },
 
         data () {
