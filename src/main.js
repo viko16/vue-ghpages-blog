@@ -20,26 +20,26 @@ Vue.use(Router);
 let router = new Router();
 
 router.map({
-	// todo: paginate not yet
-	'/list/:page': {
-		name: 'list',
-		component: ListView,
-		setting
-	},
-	'/post/:title': {
-		name: 'post',
-		component: PostView,
-		setting
-	}
+    // todo: paginate not yet
+    '/list/:page': {
+        name: 'list',
+        component: ListView,
+        setting
+    },
+    '/post/:title': {
+        name: 'post',
+        component: PostView,
+        setting
+    }
 });
 
 // default router
 router.redirect({
-	'*': '/home'
-})
+    '*': '/home'
+});
 
 router.alias({
-	'/home': '/list/1'
+    '/home': '/list/1'
 });
 
 // let's begin
