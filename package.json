@@ -23,6 +23,8 @@
     "babel-loader": "^5.3.3",
     "babel-runtime": "^5.8.29",
     "css-loader": "^0.21.0",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
     "style-loader": "^0.13.0",
     "vue-hot-reload-api": "^1.2.1",
     "vue-html-loader": "^1.0.0",
@@ -34,7 +36,7 @@
   "author": "viko16 <16viko@github.com> (https://github.com/viko16)",
   "homepage": "https://github.com/viko16/vue-ghpages-blog",
   "bugs": {
-    "url" : "https://github.com/viko16/vue-ghpages-blog/issues"
+    "url": "https://github.com/viko16/vue-ghpages-blog/issues"
   },
   "repository": {
     "type": "git",

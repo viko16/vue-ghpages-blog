@@ -21,7 +21,8 @@
 
 </template>
 
-<style>
+<style lang="less">
+
     html, body {
         font-family: "PT Sans","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
         font-size: 14px;
@@ -35,23 +36,20 @@
 
     header {
         border-bottom: 1px solid #eee;
-    }
 
-    header h1 {
-        line-height: 2;
-    }
+        h1 {
+            line-height: 2;
+        }
 
-    header a {
-        color: #222;
-    }
-
-    header a:visited {
-        color: #222;
-    }
-
-    header a:hover {
-        color: #08c;
-        text-decoration: none;
+        a {
+            &, &:link, &:visited {
+                color: #222;
+            }
+            &:hover, &:active {
+                color: #08c;
+                text-decoration: none;
+            }
+        }
     }
 
     footer {
@@ -67,6 +65,58 @@
 
     .v-enter, .v-leave {
         opacity: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-weight: 400;
+        color: #222;
+    }
+
+    h1 {
+        line-height: 3;
+        font-size: 1.8rem;
+    }
+
+    h2,
+    h3 {
+        line-height: 2.5rem;
+        margin-top: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    ul,
+    ol {
+        line-height: 2.1;
+        padding: 5px 25px;
+    }
+
+    ul li {
+        padding: 0;
+        margin: 0;
+        line-height: 2.1rem;
+    }
+
+    a {
+        color: #08c;
+        overflow-wrap: break-word;
+        word-break: break-all;
+        text-decoration: none;
+        padding: 0 .3rem;
+
+        &:hover, &:active {
+            color: #e60900;
+            text-decoration: underline;
+        }
     }
 
 </style>
