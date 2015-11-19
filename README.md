@@ -9,11 +9,11 @@ A blog based on Github pages by vue.js + webpack
 - 风格也不算太丑.. 😊
 
 ## Demo
-<http://ukn.me>
+<http://Ukn.Me>
 
 > 说明：
 - 此项目本来就是我的博客，__欢迎 Star 和 Watch__
-- 如果你真的要 Fork 的话，请务必按下面的步骤替换成自己的配置哦 😳
+- 如果你真的要 Fork 的话，请__务必__按下面的步骤替换成自己的配置哦 😳
 
 ## Usage
 1. Fork

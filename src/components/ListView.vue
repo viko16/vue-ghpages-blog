@@ -58,12 +58,17 @@
 
     .list-view {
         li {
-            line-height: 3.5;
-            height: 3.5rem;
+            margin-bottom: 1rem;
 
             a {
                 font-size: 1.2rem;
             }
+        }
+    }
+
+    @media(max-width: 600px) {
+        .publish-date {
+            display: none;
         }
     }
 
