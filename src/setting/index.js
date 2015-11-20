@@ -3,6 +3,6 @@ export default  {
     config: {
         repo: 'viko16/vue-ghpages-blog',
         path: 'markdown',
-        brance: 'markdown'
+        branch: 'markdown'
     }
 };

@@ -5,8 +5,8 @@ import { Promise } from 'es6-promise';
 // setting
 import setting from '../setting';
 
-const LIST_API_URL = `https://api.github.com/repos/${setting.config.repo}/contents/${setting.config.path}?ref=${setting.config.brance}`;
-const POST_API_URL = `https://raw.githubusercontent.com/${setting.config.repo}/${setting.config.brance}/${setting.config.path}`;
+const LIST_API_URL = `https://api.github.com/repos/${setting.config.repo}/contents/${setting.config.path}?ref=${setting.config.branch}`;
+const POST_API_URL = `https://raw.githubusercontent.com/${setting.config.repo}/${setting.config.branch}/${setting.config.path}`;
 
 let store = new EventEmitter();
 
