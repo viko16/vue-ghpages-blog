@@ -1,11 +1,11 @@
 {
   "name": "vue-ghpages-blog",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A blog based on Github pages by vue.js + webpack",
   "main": "src/main.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet",
-    "build": "NODE_ENV=production webpack --progress --hide-modules"
+    "dev": "webpack-dev-server --inline --hot --quiet --colors",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "keywords": [
     "blog",
@@ -16,20 +16,25 @@
   "dependencies": {
     "es6-promise": "^3.0.2",
     "marked": "^0.3.5",
+    "vue-router": "^0.7.5",
     "vue": "^1.0.7"
   },
   "devDependencies": {
-    "babel-core": "^5.8.33",
-    "babel-loader": "^5.3.3",
-    "babel-runtime": "^5.8.29",
-    "css-loader": "^0.21.0",
+    "autoprefixer-loader": "^3.1.0",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^5.8.0",
+    "cross-env": "^1.0.6",
+    "css-loader": "^0.23.0",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
-    "style-loader": "^0.13.0",
     "vue-hot-reload-api": "^1.2.1",
     "vue-html-loader": "^1.0.0",
-    "vue-loader": "^6.0.5",
-    "vue-router": "^0.7.5",
+    "vue-loader": "^8.0.0",
+    "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1"
   },

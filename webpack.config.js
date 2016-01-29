@@ -23,6 +23,24 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel'
         }, ]
+    },
+    vue: {
+        autoprefixer: {
+          browsers: ['> 1%']
+        },
+        loaders: {
+          css: 'vue-style!css',
+          less: 'vue-style!css!less'
+        }
+    },
+    babel: {
+        presets: ["es2015", "stage-2"],
+        plugins: ["transform-runtime"],
+        comments: false
+    },
+    devServer: {
+        historyApiFallback: true,
+        noInfo: true
     }
 }
 
@@ -36,6 +54,9 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
+            },
+            output: {
+                comments: false
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
