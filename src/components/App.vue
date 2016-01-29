@@ -1,23 +1,25 @@
 <template>
 
-    <!-- header -->
-    <header>
-        <h1><a v-link="{ path: '/home' }">{{ $route.setting.blogTitle }}</a></h1>
-    </header>
+    <div>
+        <!-- header -->
+        <header>
+            <h1><a v-link="{ path: '/home' }">{{ $route.setting.blogTitle }}</a></h1>
+        </header>
 
-    <!-- main -->
-    <router-view
-        class="view"
-        keep-alive
-        transition
-        transition-mode="out-in">
-    </router-view>
+        <!-- main -->
+        <router-view
+            class="view"
+            keep-alive
+            transition
+            transition-mode="out-in">
+        </router-view>
 
-    <footer>
-        Copyright © {{ (new Date()).getFullYear() }} /
-        Powered by <a href="https://github.com/viko16/vue-ghpages-blog" target="_blank">vue-ghpages-blog</a> /
-        Author <a href="https://github.com/viko16" target="_blank">viko16</a>
-    </footer>
+        <footer>
+            Copyright © {{ (new Date()).getFullYear() }} /
+            Powered by <a href="https://github.com/viko16/vue-ghpages-blog" target="_blank">vue-ghpages-blog</a> /
+            Author <a href="https://github.com/viko16" target="_blank">viko16</a>
+        </footer>
+    </div>
 
 </template>
 
