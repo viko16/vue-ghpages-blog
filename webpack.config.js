@@ -11,12 +11,14 @@ var TPL_PATH = path.resolve(SRC_PATH, 'templates');
 var pkg = require('./package.json');
 var d = new Date()
 var date = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate()
-var banner = "vue-ghpages-blog " + pkg.version + "\n" + date + " viko16\nhttps://github.com/viko16/vue-ghpages-blog.git";
+var banner = "vue-ghpages-blog " + pkg.version + 
+            "\n" + date + " viko16" + 
+            "\nhttps://github.com/viko16/vue-ghpages-blog.git";
 
 module.exports = {
     entry: {
         app: path.resolve(SRC_PATH, 'main.js'),
-        vendors: ['vue', 'vue-router', 'marked']
+        vendors: ['vue', 'vue-router', 'marked', 'highlight.js']
     },
     output: {
         path: './',
@@ -31,7 +33,10 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel'
-        }, ]
+        }, {
+            test: /\.css$/,
+            loader: 'vue-style!css'
+        } ]
     },
     plugins: [
         new HtmlWebpackPlugin({

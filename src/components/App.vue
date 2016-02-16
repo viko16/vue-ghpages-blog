@@ -29,6 +29,7 @@
         font-family: "PT Sans","Helvetica Neue",Helvetica,"Hiragino Sans GB","STHeitiSC-Light","Microsoft YaHei","微软雅黑",Arial,sans-serif;
         font-size: 16px;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         -webkit-text-size-adjust: none;
         color: #555;
         max-width: 820px;
