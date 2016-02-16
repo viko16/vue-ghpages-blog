@@ -7,7 +7,7 @@
 
 然后编辑 Vagrantfile，按照 [GitLab的需求](http://doc.gitlab.com/ce/install/requirements.html) 调整一下虚拟鸡配置：（若不调整，GitLab 会报500 ¬_¬）
 
-```
+```ruby
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 

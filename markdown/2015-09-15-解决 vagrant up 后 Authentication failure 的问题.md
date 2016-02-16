@@ -2,7 +2,7 @@
 
 换了台新机，要把之前的 vagrant 迁移过来，兴高采烈的 `vagrant package` 打包，AirDrop 迁移到新机导入后，却发现启动时卡在 ssh 阶段，具体是这样的：
 
-```
+```bash
  default: Warning: Connection timeout. Retrying...
  default: Warning: Authentication failure. Retrying...
  default: Warning: Authentication failure. Retrying..
@@ -16,7 +16,7 @@
 2. 然后才开启 `vagrant up`
 3. 如果还是遇到错误，不管它，用正常方式 ssh 进去，帐号密码都是 vagrant，端口是 2222
 4. 在 vagrant 内执行以下几句：
-```
+```bash
 wget https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub -O .ssh/authorized_keys
 chmod 700 .ssh
 chmod 600 .ssh/authorized_keys

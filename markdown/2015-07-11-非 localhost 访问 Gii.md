@@ -5,7 +5,7 @@
 官方文档上是这样写的：
 
 > config/web.php
-```
+```php
 'gii' => [
     'class' => 'yii\gii\Module',
     'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.*']
@@ -14,7 +14,7 @@
 
 然而会报错，经测试可以这样写：
 
-```
+```php
 // $config['modules']['gii'] = 'yii\gii\Module';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',

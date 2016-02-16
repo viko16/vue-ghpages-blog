@@ -5,7 +5,7 @@ Typecho 默认使用 Gravatar 做头像服务，各种裂你懂的
 立马动手，修改文件 `var/Typecho/Common.php`，从第937行开始
 
 >
-```
+```php
 public static function gravatarUrl($mail, $size, $rating, $default, $isSecure = false)
     {
         $url = $isSecure ? 'https://cdn.v2ex.com/gravatar/' : 'http://gravatar.duoshuo.com/avatar/';
