@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// path
 var ROOT_PATH = path.resolve(__dirname);
 var SRC_PATH = path.resolve(ROOT_PATH, 'src');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
@@ -9,21 +10,20 @@ var TPL_PATH = path.resolve(SRC_PATH, 'templates');
 
 // banner info
 var pkg = require('./package.json');
-var d = new Date()
-var date = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate()
-var banner = "vue-ghpages-blog " + pkg.version + 
-            "\n" + date + " viko16" + 
-            "\nhttps://github.com/viko16/vue-ghpages-blog.git";
+var banner = pkg.name + " " + pkg.version +
+            "\n" + new Date().toLocaleDateString() + " " + pkg.author +
+            "\n" + pkg.homepage;
 
 module.exports = {
     entry: {
         app: path.resolve(SRC_PATH, 'main.js'),
-        vendors: ['vue', 'vue-router', 'marked', 'highlight.js']
+        vendors: ['vue', 'vue-router', 'es6-promise']
     },
     output: {
-        path: './',
-        // publicPath: 'dist/',
-        filename: 'dist/[name].js'
+        path: BUILD_PATH,
+        publicPath: 'dist/',
+        filename: '[name].js',
+        chunkFilename: '[chunkhash:8].js'
     },
     module: {
         loaders: [{
@@ -41,7 +41,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'UnKnown Me',
-            template: path.resolve(TPL_PATH, 'index.html')
+            template: path.resolve(TPL_PATH, 'index.html'),
+            filename: '../index.html'
         })
     ],
     vue: {
@@ -83,7 +84,7 @@ if (process.env.NODE_ENV === 'production') {
             }
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'dist/vendor.js'),
+        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         new webpack.BannerPlugin(banner)
     ])
 }

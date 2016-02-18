@@ -1,7 +1,7 @@
 # vue-ghpages-blog
-A blog based on Github pages by vue.js + webpack
+A blog based on Github pages by Vue.js + Webpack
 
-一个依赖 GitHub，无需本地生成的静态博客，使用了 Vue.js 组件开发，webpack 打包
+一个依赖 GitHub，无需本地生成的静态博客，使用了 Vue.js 组件开发，Webpack 打包
 
 ## Features
 - 无需本地生成

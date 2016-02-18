@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --quiet --colors --host=0.0.0.0",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "rimraf dist/* && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "keywords": [
     "blog",
@@ -33,6 +33,7 @@
     "html-webpack-plugin": "^2.8.1",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
+    "rimraf": "^2.5.2",
     "vue-hot-reload-api": "^1.2.1",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.0.0",
