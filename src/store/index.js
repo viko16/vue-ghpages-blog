@@ -5,8 +5,9 @@ import { Promise } from 'es6-promise';
 // setting
 import setting from '../setting';
 
+// https://developer.github.com/v3/repos/#get
 const LIST_API_URL = `https://api.github.com/repos/${setting.config.repo}/contents/${setting.config.path}?ref=${setting.config.branch}`;
-const POST_API_URL = `https://raw.githubusercontent.com/${setting.config.repo}/${setting.config.branch}/${setting.config.path}`;
+
 
 let store = new EventEmitter();
 
@@ -20,11 +21,16 @@ export default store;
  * @returns {Promise}
  */
 store.getPost = (title) => {
+
+    const POST_API_URL = `https://api.github.com/repos/${setting.config.repo}/contents/${setting.config.path}/${title}?ref=${setting.config.branch}`;
+
     return new Promise((resolve, reject) => {
 
         const xhr = new XMLHttpRequest();
 
-        xhr.open('GET', `${POST_API_URL}/${title}`);
+        xhr.open('GET', `${POST_API_URL}`);
+        // https://developer.github.com/v3/media/#html
+        xhr.setRequestHeader("Accept", "application/vnd.github.v3.html");
         xhr.onload = () => {
             const resText = xhr.responseText;
             resolve(resText);
@@ -46,7 +52,7 @@ store.getPost = (title) => {
 store.getListByPage = (page = 1) => {
     return new Promise((resolve, reject) => {
 
-        if (sessionStorage.getItem('posts')) {
+        if (sessionStorage && sessionStorage.getItem('posts')) {
 
             // read data from cache
             resolve(JSON.parse(sessionStorage.posts));

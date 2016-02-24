@@ -33,10 +33,7 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel'
-        }, {
-            test: /\.css$/,
-            loader: 'vue-style!css'
-        } ]
+        }]
     },
     plugins: [
         new HtmlWebpackPlugin({
