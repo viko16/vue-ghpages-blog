@@ -4,8 +4,8 @@ import Router from 'vue-router';
 
 // components
 import App from './components/App.vue';
-// import ListView from './components/ListView.vue';
-// import PostView from './components/PostView.vue';
+import ListView from './components/ListView.vue';
+import PostView from './components/PostView.vue';
 
 // setting
 import setting from './setting';
@@ -22,14 +22,12 @@ let router = new Router;
 router.map({
     '/list/:page': {
         name: 'list',
-        // code splitting for component async loading
-        // http://cn.vuejs.org/guide/components.html#u5F02_u6B65_u7EC4_u4EF6
-        component: resolve => require(['./components/ListView.vue'], resolve),
+        component: ListView,
         setting
     },
     '/post/:title': {
         name: 'post',
-        component: resolve => require(['./components/PostView.vue'], resolve),
+        component: PostView,
         setting
     }
 });
