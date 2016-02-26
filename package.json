@@ -4,7 +4,7 @@
   "description": "A blog based on Github pages by vue.js + webpack",
   "main": "src/main.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet --colors --host=0.0.0.0",
+    "dev": "webpack-dev-server --inline --hot",
     "build": "rimraf dist/* && cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "keywords": [

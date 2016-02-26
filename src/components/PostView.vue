@@ -51,6 +51,18 @@
                     content: store.getPost(title).then(content => content)
                 }
             }
+        },
+
+        watch: {
+            'content'() {
+                // Load the external link into new tab
+                let linksArray = Array.from(document.querySelectorAll('a'));
+                const currentHost = window.location.host;
+                linksArray.forEach(el => {
+                    if (el.href && el.host !== currentHost)
+                        el.target = '_blank'
+                });
+            }
         }
 
     }
