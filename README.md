@@ -1,6 +1,7 @@
 # vue-ghpages-blog
 
 [![Join the chat at https://gitter.im/viko16/vue-ghpages-blog](https://badges.gitter.im/viko16/vue-ghpages-blog.svg)](https://gitter.im/viko16/vue-ghpages-blog?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A blog based on Github pages by Vue.js + Webpack
 
 一个依赖 GitHub，无需本地生成的静态博客，使用了 Vue.js 组件开发，Webpack 打包
