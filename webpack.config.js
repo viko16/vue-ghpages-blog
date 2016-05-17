@@ -60,7 +60,7 @@ module.exports = {
         historyApiFallback: true,
         noInfo: true,
         stats: { colors: true },
-        host: '0.0.0.0'
+        host: '127.0.0.1'
     },
     devtool: 'eval-source-map'
 }
