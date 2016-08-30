@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+*.log
+.npm
+
+.DS_Store
+._*
+*.swp
+Thumbs.db
+$RECYCLE.BIN/
+*.lnk
+
+.idea
+.vscode

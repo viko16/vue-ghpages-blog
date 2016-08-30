@@ -1,0 +1,29 @@
+{
+  "name": "vue-ghpages-blog",
+  "version": "1.0.0",
+  "description": "A blog based on Github pages by Vue.js 2 + Webpack 2",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viko16/vue-ghpages-blog.git"
+  },
+  "keywords": [
+    "blog",
+    "github",
+    "vuejs",
+    "webpack"
+  ],
+  "author": "viko16 (https://github.com/viko16)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viko16/vue-ghpages-blog/issues"
+  },
+  "homepage": "https://github.com/viko16/vue-ghpages-blog#readme",
+  "devDependencies": {
+    "eslint": "^3.4.0",
+    "eslint-config-xo-space": "^0.14.0"
+  }
+}

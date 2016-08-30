@@ -1,0 +1,7 @@
+{
+  "extends": "xo-space",
+  "env": {
+    "node": true,
+    "browser": true
+  }
+}
