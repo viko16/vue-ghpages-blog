@@ -58,7 +58,7 @@ export default {
       // https://developer.github.com/v3/media/#raw-1
       headers: { Accept: 'application/vnd.github.v3.raw' }
     }
-    let cacheKey = 'post' + hash
+    let cacheKey = 'post.' + hash
 
     return new Promise((resolve, reject) => {
       if (window.sessionStorage &&
@@ -66,7 +66,7 @@ export default {
         // read from sessionStorage
         resolve(JSON.parse(window.sessionStorage.getItem(cacheKey)))
       } else {
-        Vue.http.get(getPostUrl(), httpOpts)
+        Vue.http.get(getPostUrl(hash), httpOpts)
           .then(res => {
             let content = res.body
             // save into sessionStorage
