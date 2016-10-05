@@ -1,0 +1,119 @@
+@import '~normalize.css'
+
+//
+// common
+// -----------------------------------------
+
+body
+  // font
+  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif
+  font-size 14px
+  line-height 2
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  -webkit-text-size-adjust none
+  // size
+  position relative
+  max-width 700px
+  margin 0 auto
+  padding 0
+  background #fff
+  color #555
+  /::selection
+    background #08c
+    color #fff
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-weight 400
+
+a
+  text-decoration none
+  color #555
+  overflow-wrap break-word
+  word-break break-all
+
+.header
+  margin 50px auto
+  text-align center
+  a
+    font-size 16px
+    letter-spacing 5px
+    text-transform uppercase
+
+//
+// List View
+// -----------------------------------------
+
+.list-view
+  margin 0 20px
+  ol, ul
+    padding 0
+    list-style none
+
+.list
+  position relative
+
+.list-item
+  position relative
+  margin-bottom 50px
+  font-size 16px
+
+.item-date
+  display inline-block
+  font-size 12px
+  color #888
+  border-top 1px solid #ddd
+  padding-top 12px
+
+.item-title
+  display inline-block
+  margin-bottom 10px
+  &:hover
+    color #08c
+
+//
+// Post View
+// -----------------------------------------
+
+.post-view
+  margin 0 20px 50px
+  a
+    color #08c
+    &:hover
+      border-bottom 1px dashed #08c
+
+.post-title
+  line-height 1
+  margin-bottom 50px
+
+.post-date
+  float right
+  font-size 12px
+  font-weight 400
+  line-height 2
+  color #888
+
+pre
+  background #f7f7f7
+  padding 16px
+  overflow-x auto
+  white-space pre
+
+code
+  background #f7f7f7
+
+blockquote
+  margin 0
+  padding 0 16px
+  border-left 4px solid #ddd
+
+//
+// highlight.js
+// -----------------------------------------
+
+@import '~highlight.js/styles/github.css'
