@@ -45,9 +45,18 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    colors: true,
+    contentBase: 'dist/',
+    host: '0.0.0.0'
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  vue: {
+    loaders: {
+      css: 'vue-style!css',
+      stylus: 'vue-style!css!stylus'
+    }
+  }
 }
 
 if (process.env.NODE_ENV === 'production') {
