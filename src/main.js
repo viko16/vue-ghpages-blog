@@ -5,7 +5,7 @@ import router from './router'
 
 import App from './App.vue'
 
-Vue.config.debug = process.env.NODE_ENV !== 'production'
+import './utils/filter'
 
 const app = new Vue(
   Vue.util.extend({ router }, App)
