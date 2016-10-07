@@ -1,4 +1,5 @@
 @import '~normalize.css'
+@import '~prismjs/themes/prism.css'
 
 //
 // variable
@@ -118,22 +119,16 @@ a
   color metaColor
 
 pre
-  background codeBgColor
+  background codeBgColor !important
   padding 16px
   overflow-x auto
   white-space pre
 
 code
   background codeBgColor
-  font-family monospaceFontFamily
+  font-family monospaceFontFamily !important
 
 blockquote
   margin 0
   padding 0 16px
   border-left 4px solid #ddd
-
-//
-// highlight.js
-// -----------------------------------------
-
-@import '~highlight.js/styles/github.css'

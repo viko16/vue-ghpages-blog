@@ -14,12 +14,14 @@
   import api from '../api'
   import conf from '../conf.json'
   import marked from 'marked'
-  import hljs from 'highlight.js'
+  import Prism from 'prismjs'
   import fm from 'front-matter'
 
+  // https://github.com/chjj/marked#options-1
   marked.setOptions({
-    highlight(code) {
-      return hljs.highlightAuto(code).value
+    highlight(code, lang) {
+      // http://prismjs.com/extending.html#api
+      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
     },
     breaks: true,
     gfm: true
@@ -38,7 +40,7 @@
 
     computed: {
       htmlFromMarkdown() {
-        return marked(fm(this.content).body)
+        return marked(this.content)
       }
     },
 
@@ -50,13 +52,13 @@
       loadPost () {
         api.getDetail(this.$route.params.hash)
           .then(text => {
-            // parse front-matter
+            // Parse front-matter
             // https://github.com/jxson/front-matter#fmstring
             const content = fm(text)
             this.content = content.body
             this.title = content.attributes.title
             this.date = content.attributes.date
-            // set window title
+            // Set window title
             window.document.title = `${this.title} - ${conf.blogTitle}`
           })
           .catch(() => { /* TODO */ })
