@@ -1,6 +1,6 @@
 {
   "name": "vue-ghpages-blog",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A blog based on Github pages by Vue.js 2 + Webpack 2",
   "main": "src/main.js",
   "scripts": {
