@@ -19,14 +19,17 @@ before_install:
 
 install:
 - npm install
-- npm run build
 
 script:
+  - npm run build
+
+after_script:
 - cd dist
 - git add --all .
-- git commit --message "automatically update by travis"
-- git push --force "https://${GH_TOKEN}@github.com/viko16/vue-ghpages-blog.git" try-pages:try-pages
+- git commit --message "automatically update from travis-ci"
+- git push --force "https://${GH_TOKEN}@${GH_REF}" try-pages:try-pages
 
 env:
   global:
-    secure: WqfWUhFFiwvc7KbYQB/CTRTbSqbPjd7XBxO/SCdEn/6e3pazx/Co8K1xyuX4yU7QpT5tYotNJK9N47f+gHbzvySTfYbtPWA2rwZXT9JXQZcBuKxeY6mD47HgFzJhtey9JUSJEn6X7MIYrM6p7ZZSgzMcd/ldfYyA4SzRKgVPfxOCt6wZMAaBH0EEBT4DBT/BCh9ibjpyAA6z64HjXi43dxCgQCr7VGJN1C0K0rVr/a+oh7aIeRzzVGRdxmawEn7cS5xQ3DGC94DZp5L7E0omcGTVM2hsu2MoKQaN7W+IZNFGvsXbHk6ubzpSo7FNmtFlwVXHZIUU6JQWr6tVNr07OeJsYxAp884YfBgcKcVdwktQTSU5jUfzhKToufmKEA9SuVpmrhHWSmipvtxQptf36CJM1rjTmfZuMgqSKGrQJWuuHzMXaO1ibIYRJRZDEOBhZ1yye+nGrsGeEAofnaQ+c0wGOPTS0n7Ufofh8X1qUW4AU5sw0YiJJCUuXa7CMFK5spSorr2ZQanJ8loqLb2/s9uMQP8r9gJOqIb2QwnPin3O1Te1YkhPZRt22GLS64cIT+fUF0ae3XkmV8RoRMUCGjmxY9RUd4OzqGhArgnyYCPes8hwmhQGA0j30FNkFAREaK0U1L6gTYVS0/uoS4bB0SMoxKcMrQBeNlaQUY/ngfw=
+    - GH_REF: github.com/viko16/vue-ghpages-blog.git
+    - secure: WqfWUhFFiwvc7KbYQB/CTRTbSqbPjd7XBxO/SCdEn/6e3pazx/Co8K1xyuX4yU7QpT5tYotNJK9N47f+gHbzvySTfYbtPWA2rwZXT9JXQZcBuKxeY6mD47HgFzJhtey9JUSJEn6X7MIYrM6p7ZZSgzMcd/ldfYyA4SzRKgVPfxOCt6wZMAaBH0EEBT4DBT/BCh9ibjpyAA6z64HjXi43dxCgQCr7VGJN1C0K0rVr/a+oh7aIeRzzVGRdxmawEn7cS5xQ3DGC94DZp5L7E0omcGTVM2hsu2MoKQaN7W+IZNFGvsXbHk6ubzpSo7FNmtFlwVXHZIUU6JQWr6tVNr07OeJsYxAp884YfBgcKcVdwktQTSU5jUfzhKToufmKEA9SuVpmrhHWSmipvtxQptf36CJM1rjTmfZuMgqSKGrQJWuuHzMXaO1ibIYRJRZDEOBhZ1yye+nGrsGeEAofnaQ+c0wGOPTS0n7Ufofh8X1qUW4AU5sw0YiJJCUuXa7CMFK5spSorr2ZQanJ8loqLb2/s9uMQP8r9gJOqIb2QwnPin3O1Te1YkhPZRt22GLS64cIT+fUF0ae3XkmV8RoRMUCGjmxY9RUd4OzqGhArgnyYCPes8hwmhQGA0j30FNkFAREaK0U1L6gTYVS0/uoS4bB0SMoxKcMrQBeNlaQUY/ngfw=
