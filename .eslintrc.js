@@ -5,6 +5,9 @@ module.exports = {
     'node': true,
     'browser': true
   },
+  'plugins': [
+    'html'
+  ],
   'rule': {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
