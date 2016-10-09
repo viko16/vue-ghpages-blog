@@ -15,7 +15,7 @@ cache:
 before_install:
 - git config --global user.name "viko16"
 - git config --global user.email "16viko@gmail.com"
-- git clone --branch try-pages https://github.com/viko16/vue-ghpages-blog.git dist
+- git clone --branch gh-pages https://github.com/viko16/vue-ghpages-blog.git dist
 
 install:
 - npm install
@@ -25,9 +25,10 @@ script:
 
 after_script:
 - cd dist
+- echo "ukn.me" > CNAME
 - git add --all .
 - git commit --message "automatically update from travis-ci"
-- git push --force "https://${GH_TOKEN}@${GH_REF}" try-pages:try-pages
+- git push --force "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
 
 env:
   global:
