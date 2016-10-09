@@ -9,6 +9,7 @@
   "exclude": [
     "node_modules",
     "tmp",
-    "temp"
+    "temp",
+    "dist"
   ]
 }
