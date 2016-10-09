@@ -19,7 +19,7 @@
 
   // https://github.com/chjj/marked#options-1
   marked.setOptions({
-    highlight(code, lang) {
+    highlight (code, lang) {
       // http://prismjs.com/extending.html#api
       return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
     },
@@ -34,12 +34,12 @@
       return {
         title: '',
         date: null,
-        content: '',
+        content: ''
       }
     },
 
     computed: {
-      htmlFromMarkdown() {
+      htmlFromMarkdown () {
         return marked(this.content)
       }
     },
@@ -64,16 +64,17 @@
           .catch(() => { /* TODO */ })
       },
 
-      newTab() {
+      newTab () {
         Vue.nextTick(function () {
           // Load the external link into new tab
           const linksArray = Array.from(document.querySelectorAll('a'))
           const currentHost = window.location.host
           linksArray.forEach(el => {
-            if (el.href && el.host !== currentHost)
+            if (el.href && el.host !== currentHost) {
               el.target = '_blank'
               // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
               el.rel = 'noopener noreferrer'
+            }
           })
         })
       }

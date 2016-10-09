@@ -27,7 +27,7 @@
     },
 
     computed: {
-      orderedList() {
+      orderedList () {
         // Order by publish date, desc
         return this.lists.sort((a, b) => (new Date(b.date) - new Date(a.date)))
       }
