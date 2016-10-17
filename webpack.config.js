@@ -13,8 +13,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    // publicPath: 'dist/',
-    filename: '/build.js'
+    publicPath: '/',
+    filename: 'build.js'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules')
