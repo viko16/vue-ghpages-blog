@@ -22,7 +22,7 @@ For the prev version, please see the [vue-1 branch](https://github.com/viko16/vu
 
 - Vue 2 / Vue-router / Vue-resource
 - Webpack 2 / Babel 6 / Stylus
-- No need to generate locally
+- No need to generate locally ( now using [TravisCI](https://travis-ci.org) )
 - Hosting on GitHub Pages
 - SessionStroage cache
 
@@ -42,6 +42,10 @@ npm run dev
 # Lint and Test
 npm run test
 ```
+
+## About My Workflow
+- All the posts store in [viko16/writings](https://github.com/viko16/writings), while [`src/conf.json`](src/conf.json) points it.
+- When I push the code to develop branch, [TravisCI](.travis.yml) will deploy `gh-pages` automatically.
 
 ## License
 
