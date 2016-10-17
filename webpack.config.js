@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var pkg = require('./package.json')
 var banner =
   pkg.description +
-  '\n' + "v" + pkg.version + ' (c)' + new Date().getFullYear() + " " + pkg.author +
+  '\n' + 'v' + pkg.version + ' (c)' + new Date().getFullYear() + ' ' + pkg.author +
   '\n' + pkg.homepage
 
 module.exports = {
@@ -35,7 +35,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'eslint',
         exclude: /node_modules/
-      },
+      }
     ],
     loaders: [
       {
