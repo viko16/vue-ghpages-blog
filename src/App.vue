@@ -4,6 +4,10 @@
       <router-link to="/">{{ title }}</router-link>
     </header>
     <router-view></router-view>
+    <footer class="footer">
+      Copyright © {{ (new Date()).getFullYear() }} |
+      Powered by <a href="https://github.com/viko16/vue-ghpages-blog" target="_blank">vue-ghpages-blog</a>
+    </footer>
   </div>
 </template>
 
