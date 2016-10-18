@@ -1,7 +1,7 @@
 <template>
   <div id='app'>
     <header class="header">
-      <router-link to="/">{{ title }}</router-link>
+      <input tag="h1" to="/" class="title search-bar" v-model="keyword" @keyup="goToSearch" onclick="this.select()">
     </header>
     <router-view></router-view>
   </div>
@@ -15,7 +15,16 @@
   export default {
     data () {
       return {
-        title: conf.blogTitle
+        title: conf.blogTitle,
+        keyword: ''
+      }
+    },
+    mounted () {
+      this.keyword = !this.$route.query.keyword || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
+    },
+    methods: {
+      goToSearch: function () {
+        this.$router.push({name: 'list', query: {'keyword': this.keyword === this.title ? '' : this.keyword}})
       }
     }
   }

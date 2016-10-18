@@ -28,8 +28,11 @@
 
     computed: {
       orderedList () {
-        // Order by publish date, desc
-        return this.lists.sort((a, b) => (new Date(b.date) - new Date(a.date)))
+        var keyword = this.$route.query.keyword || ''
+        // Filter by title, Order by publish date, desc
+        return this.lists.filter(function (item) {
+          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+        }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
       }
     },
 
