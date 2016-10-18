@@ -1,7 +1,9 @@
 <template>
   <div id='app'>
     <header class="header">
-      <input tag="h1" to="/" class="title search-bar" v-model="keyword" @keyup="goToSearch" onclick="this.select()">
+      <router-link to="/">{{ title }}</router-link>
+      <div style="clear: both"></div>
+      <input tag="h1" to="/" class="search-bar" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
     </header>
     <router-view></router-view>
   </div>
@@ -19,11 +21,14 @@
         keyword: ''
       }
     },
-    mounted () {
-      this.keyword = !this.$route.query.keyword || this.$route.query.keyword === this.title ? this.title : this.$route.query.keyword
-    },
     methods: {
-      goToSearch: function () {
+      resetSearch: function () {
+        this.keyword = ''
+        document.getElementsByClassName('search-bar')[0].blur()
+      }
+    },
+    watch: {
+      'keyword': function () {
         this.$router.push({name: 'list', query: {'keyword': this.keyword === this.title ? '' : this.keyword}})
       }
     }
