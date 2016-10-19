@@ -2,7 +2,7 @@
   <section class="list-view">
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
-      <li v-for="item in orderedList" class="list-item">
+      <li v-for="item in filteredList" class="list-item">
         <router-link :to="'/post/' + item.sha" class="item-title">
           {{ item.title }}
         </router-link>
@@ -27,12 +27,12 @@
     },
 
     computed: {
-      orderedList () {
-        var keyword = this.$route.query.keyword || ''
+      filteredList () {
+        let keyword = (this.$route.query.keyword || '').toLowerCase()
         // Filter by title, Order by publish date, desc
-        return this.lists.filter(function (item) {
-          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
-        }).sort((a, b) => (new Date(b.date) - new Date(a.date)))
+        return this.lists
+          .filter(item => (item.title.toLowerCase().indexOf(keyword) !== -1))
+          .sort((itemA, itemB) => (new Date(itemB.date) - new Date(itemA.date)))
       }
     },
 

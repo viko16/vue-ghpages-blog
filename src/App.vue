@@ -3,7 +3,10 @@
     <header class="header">
       <router-link to="/">{{ title }}</router-link>
       <div style="clear: both"></div>
-      <input tag="h1" to="/" class="search-bar" v-model="keyword" @keyup.esc="resetSearch" onclick="this.select()">
+      <input class="search-bar" placeholder="Search.."
+        ref="searchBar" v-model="keyword"
+        @click="selectSearchText"
+        @keyup.esc="resetSearch">
     </header>
     <router-view></router-view>
     <footer class="footer">
@@ -26,14 +29,21 @@
       }
     },
     methods: {
-      resetSearch: function () {
+      resetSearch () {
         this.keyword = ''
-        document.getElementsByClassName('search-bar')[0].blur()
+        this.$refs.searchBar.blur()
+      },
+      selectSearchText () {
+        this.$refs.searchBar.select()
       }
     },
     watch: {
-      'keyword': function () {
-        this.$router.push({name: 'list', query: {'keyword': this.keyword === this.title ? '' : this.keyword}})
+      'keyword' () {
+        if (this.keyword) {
+          this.$router.push({name: 'list', query: { keyword: this.keyword }})
+        } else {
+          this.$router.push({name: 'list'})
+        }
       }
     }
   }

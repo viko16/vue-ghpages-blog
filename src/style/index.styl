@@ -54,6 +54,10 @@ a
   overflow-wrap break-word
   word-break break-all
 
+//
+// Shared
+// -----------------------------------------
+
 .header
   margin 50px auto
   text-align center
@@ -62,6 +66,20 @@ a
     letter-spacing 5px
     text-transform uppercase
     color textColor
+
+.search-bar
+  display block
+  margin 5px auto 0
+  width 150px
+  text-align center
+  border none
+  background-color bgColor
+  &:hover,
+  &:focus,
+  &:active
+    outline none
+    background-color darken(bgColor, 2)
+    text-decoration none
 
 .footer
   margin-bottom 15px
@@ -99,21 +117,6 @@ a
   color metaColor
   border-top 1px solid #ddd
   padding-top 12px
-
-.title
-  cursor default
-
-.search-bar
-  text-align center
-  border none
-  background-color bgColor
-
-
-.search-bar:hover, .search-bar:focus, .search-bar:active
-  outline: none
-  background-color: darken(bgColor, 2)
-  text-decoration: none
-
 
 //
 // Post View
