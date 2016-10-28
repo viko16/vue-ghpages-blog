@@ -116,3 +116,12 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.BannerPlugin(banner)
   ])
 }
+
+// Workarounds
+// Hack for Ubuntu on Windows: interface enumeration fails with EINVAL, so return empty.
+// https://github.com/Microsoft/BashOnWindows/issues/468#issuecomment-241916426
+try {
+  require('os').networkInterfaces();
+} catch (e) {
+  require('os').networkInterfaces = () => ({});
+}
