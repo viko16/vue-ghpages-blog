@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-var HtmlWebpackPlguin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var pkg = require('./package.json')
@@ -75,7 +75,7 @@ module.exports = {
         }
       }
     }),
-    new HtmlWebpackPlguin({
+    new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'tpl.html'),
       filename: 'index.html',
       minify: {
