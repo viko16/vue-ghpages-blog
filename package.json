@@ -8,7 +8,7 @@
     "prebuild": "rimraf dist/*",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "lint": "eslint --ext \".js, .vue\" src",
-    "test": "karma start test/unit/karma.conf.js --single-run"
+    "test": "npm run lint && karma start test/unit/karma.conf.js --single-run"
   },
   "engines": {
     "node": ">=4"
