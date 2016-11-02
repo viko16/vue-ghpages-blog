@@ -9,6 +9,9 @@ var banner =
   '\n' + 'v' + pkg.version + ' (c)' + new Date().getFullYear() + ' ' + pkg.author +
   '\n' + pkg.homepage
 
+var conf = require('./src/conf.json')
+var favicon = conf.favicon ? path.resolve(__dirname, './src/conf.json', conf.favicon) : false
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -78,6 +81,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'tpl.html'),
       filename: 'index.html',
+      favicon: favicon,
       minify: {
         // https://github.com/kangax/html-minifier#options-quick-reference
         removeComments: true,
