@@ -19,7 +19,7 @@ describe('Utils', function () {
     'url': 'https://api.github.com/repos/viko16/writings/contents/posts/2015-02-25-Chrome%20for%20Mac%20%E6%89%A9%E5%B1%95%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95.md?ref=master'
   }
 
-  describe('onlyTitle', function () {
+  describe('onlyTitle()', function () {
     it('should return a string', function () {
       expect(onlyTitle(title)).to.be.a('string')
       expect(onlyTitle(titleWithChinese)).to.be.a('string')
@@ -31,7 +31,7 @@ describe('Utils', function () {
     })
   })
 
-  describe('onlyDate', function () {
+  describe('onlyDate()', function () {
     it('should return a string', function () {
       expect(onlyDate(title)).to.be.a('string')
       expect(onlyDate(titleWithChinese)).to.be.a('string')
@@ -44,7 +44,7 @@ describe('Utils', function () {
     })
   })
 
-  describe('objReduce', function () {
+  describe('objReduce()', function () {
     const compareObject = {
       'name': '2015-02-25-Chrome for Mac.md',
       'sha': '35d4387629a7ff34f6d9f1d068101cac958f057c'
