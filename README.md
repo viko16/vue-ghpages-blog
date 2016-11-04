@@ -24,7 +24,7 @@ For the prev version, please see the [vue-1 branch](https://github.com/viko16/vu
 - Webpack 2 / Babel 6 / Stylus
 - No need to generate locally ( now using [TravisCI](https://travis-ci.org) )
 - Hosting on GitHub Pages
-- SessionStroage cache
+- SessionStorage cache
 
 ## Demo
 
