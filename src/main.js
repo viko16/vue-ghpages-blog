@@ -5,7 +5,10 @@ import router from './router'
 
 import App from './App.vue'
 
-import './utils/filter'
+import filter from './utils/filter'
+
+// setup Vue filter
+filter(Vue)
 
 // whether to allow vue-devtools inspection
 // false in production builds
