@@ -47,7 +47,7 @@
           .then(lists => {
             this.lists = lists
           })
-          .catch(() => { /* TODO */ })
+          .catch(err => { console.error(err) })
       }
     },
 

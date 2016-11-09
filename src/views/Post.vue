@@ -61,7 +61,7 @@
             // Set window title
             window.document.title = `${this.title} - ${conf.blogTitle}`
           })
-          .catch(() => { /* TODO */ })
+          .catch(err => { console.error(err) })
       },
 
       newTab () {

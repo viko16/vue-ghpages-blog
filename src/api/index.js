@@ -1,12 +1,9 @@
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-import { Promise } from 'es6-promise'
+import axios from 'axios'
+import promise from 'es6-promise'
+promise.polyfill()
 
 import conf from '../conf.json'
 import { objReduce, onlyTitle, onlyDate } from '../utils'
-
-// Install plugin
-Vue.use(VueResource)
 
 /**
  * Format GitHub Api url for content list
@@ -34,53 +31,49 @@ function getPostUrl (hash) {
 export default {
 
   getList () {
-    return new Promise((resolve, reject) => {
-      if (window.sessionStorage &&
-        window.sessionStorage.hasOwnProperty('list')) {
-        // Read from sessionStorage
-        resolve(JSON.parse(window.sessionStorage.getItem('list')))
-      } else {
-        Vue.http.get(getListUrl())
-          .then(res => {
-            let list = res.body
-            list = list.map(els => objReduce(els, ['name', 'sha', 'size']))
+    if (window.sessionStorage &&
+      window.sessionStorage.hasOwnProperty('list')) {
+      // Read from sessionStorage
+      return Promise.resolve(JSON.parse(window.sessionStorage.getItem('list')))
+    } else {
+      return axios.get(getListUrl())
+        .then(res => res.data)
+        .then(arr => {
+          // Data cleaning
+          let list = arr.map(els => objReduce(els, ['name', 'sha', 'size']))
                         .map(el => {
                           el.title = onlyTitle(el.name)
                           el.date = onlyDate(el.name)
                           return el
                         })
-            // Save into sessionStorage
-            window.sessionStorage && window.sessionStorage.setItem('list', JSON.stringify(list))
-            // ..then return
-            resolve(list)
-          }, reject)
-      }
-    })
+          // Save into sessionStorage
+          window.sessionStorage && window.sessionStorage.setItem('list', JSON.stringify(list))
+          // ..then return
+          return list
+        })
+    }
   },
 
   getDetail (hash) {
-    let httpOpts = {
+    const httpOpts = {
       // https://developer.github.com/v3/media/#raw-1
       headers: { Accept: 'application/vnd.github.v3.raw' }
     }
-    let cacheKey = 'post.' + hash
+    const cacheKey = 'post.' + hash
 
-    return new Promise((resolve, reject) => {
-      if (window.sessionStorage &&
-        window.sessionStorage.hasOwnProperty(cacheKey)) {
-        // Read from sessionStorage
-        resolve(JSON.parse(window.sessionStorage.getItem(cacheKey)))
-      } else {
-        Vue.http.get(getPostUrl(hash), httpOpts)
-          .then(res => {
-            let content = res.body
-            // Save into sessionStorage
-            window.sessionStorage && window.sessionStorage.setItem(cacheKey, JSON.stringify(content))
-            // ..then return
-            resolve(content)
-          }, reject)
-      }
-    })
+    if (window.sessionStorage &&
+      window.sessionStorage.hasOwnProperty(cacheKey)) {
+      // Read from sessionStorage
+      return Promise.resolve(JSON.parse(window.sessionStorage.getItem(cacheKey)))
+    } else {
+      return axios.get(getPostUrl(hash), httpOpts)
+        .then(res => res.data)
+        .then(content => {
+          // Save into sessionStorage
+          window.sessionStorage && window.sessionStorage.setItem(cacheKey, JSON.stringify(content))
+          // ..then return
+          return content
+        })
+    }
   }
-
 }
