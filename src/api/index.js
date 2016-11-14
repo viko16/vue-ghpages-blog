@@ -1,6 +1,5 @@
 import axios from 'axios'
-import promise from 'es6-promise'
-promise.polyfill()
+require('es6-promise').polyfill()
 
 import conf from '../conf.json'
 import { objReduce, onlyTitle, onlyDate } from '../utils'
@@ -19,7 +18,7 @@ function getListUrl () {
 }
 
 /**
- * Format Github Api url for file content
+ * Format GitHub Api url for file content
  * @param {string} hash
  * @returns {string}
  */
