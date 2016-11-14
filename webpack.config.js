@@ -8,6 +8,7 @@ var banner =
   pkg.description +
   '\n' + 'v' + pkg.version + ' (c)' + new Date().getFullYear() + ' ' + pkg.author +
   '\n' + pkg.homepage
+var isProd = process.env.NODE_ENV === 'production'
 
 var conf = require('./src/conf.json')
 var favicon = conf.favicon ? path.resolve(__dirname, './src/conf.json', conf.favicon) : false
@@ -17,7 +18,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     // publicPath: 'dist/',
-    filename: 'build.js'
+    filename: isProd ? 'build.[hash].js' : 'build.js'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules')
@@ -88,7 +89,7 @@ module.exports = {
         collapseWhitespace: true
       }
     }),
-    new ExtractTextPlugin('build.css')
+    new ExtractTextPlugin(isProd ? 'build.[hash].css' : 'build.css')
   ],
   devServer: {
     historyApiFallback: true,
@@ -97,11 +98,10 @@ module.exports = {
     contentBase: 'dist/',
     host: '0.0.0.0'
   },
-  devtool: '#eval-source-map'
+  devtool: isProd ? false : '#eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = false
+if (isProd) {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -125,7 +125,7 @@ if (process.env.NODE_ENV === 'production') {
 // Hack for Ubuntu on Windows: interface enumeration fails with EINVAL, so return empty.
 // https://github.com/Microsoft/BashOnWindows/issues/468#issuecomment-241916426
 try {
-  require('os').networkInterfaces();
+  require('os').networkInterfaces()
 } catch (e) {
-  require('os').networkInterfaces = () => ({});
+  require('os').networkInterfaces = () => ({})
 }
