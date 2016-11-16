@@ -5,8 +5,6 @@ import App from '../../../src/App.vue'
 import router from '../../../src/router'
 import conf from '../../../src/conf.json'
 
-import '../../../src/utils/filter'
-
 describe('App.vue', function () {
   it('should mount correctly', function () {
     const app = new Vue(
