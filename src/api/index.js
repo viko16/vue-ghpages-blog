@@ -1,5 +1,5 @@
 import axios from 'axios'
-require('es6-promise').polyfill()
+import 'es6-promise/auto'
 
 import conf from '../conf.json'
 import { objReduce, onlyTitle, onlyDate } from '../utils'
@@ -39,7 +39,7 @@ export default {
         .then(res => res.data)
         .then(arr => {
           // Data cleaning
-          let list = arr.map(els => objReduce(els, ['name', 'sha', 'size']))
+          const list = arr.map(els => objReduce(els, ['name', 'sha', 'size']))
                         .map(el => {
                           el.title = onlyTitle(el.name)
                           el.date = onlyDate(el.name)

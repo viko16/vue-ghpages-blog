@@ -1,70 +1,72 @@
-var path = require('path')
-var webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var pkg = require('./package.json')
-var banner =
-  pkg.description +
-  '\n' + 'v' + pkg.version + ' (c)' + new Date().getFullYear() + ' ' + pkg.author +
-  '\n' + pkg.homepage
-var isProd = process.env.NODE_ENV === 'production'
+const pkg = require('./package.json')
+// Adds a banner to the top of each generated chunk.
+const banner = `
+${pkg.description}
+v${pkg.version} ©${new Date().getFullYear()} ${pkg.author}
+${pkg.homepage}
+`.trim()
 
-var conf = require('./src/conf.json')
-var favicon = conf.favicon ? path.resolve(__dirname, './src/conf.json', conf.favicon) : false
+const isProd = process.env.NODE_ENV === 'production'
+
+const conf = require('./src/conf.json')
+const favicon = conf.favicon ? path.resolve(__dirname, './src/conf.json', conf.favicon) : false
 
 module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    // publicPath: 'dist/',
     filename: isProd ? 'build.[hash].js' : 'build.js'
-  },
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
   },
   resolve: {
     alias: {
-      vue: 'vue/dist/vue.js'
+      vue: 'vue/dist/vue'
     }
   },
   module: {
-    preLoaders: [
+    rules: [
+      // preLoaders
       {
         test: /\.vue$/,
-        loader: 'eslint',
+        enforce: 'pre',
+        loader: 'eslint-loader',
         exclude: /node_modules/
       },
       {
         test: /\.js$/,
-        loader: 'eslint',
+        enforce: 'pre',
+        loader: 'eslint-loader',
         exclude: /node_modules/
-      }
-    ],
-    loaders: [
+      },
+      // Loaders
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json-loader'
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file',
-        query: {
+        loader: 'file-loader',
+        options: {
           name: '[name].[ext]?[hash]'
         }
       }
     ],
     noParse: [
-      /\.min\.js/
+      /\.min\.js$/,
+      /es6-promise\.js$/
     ]
   },
   plugins: [
@@ -72,10 +74,9 @@ module.exports = {
       vue: {
         loaders: {
           stylus: ExtractTextPlugin.extract({
-            loader: 'css?{discardComments:{removeAll:true}}!stylus',
+            loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
             fallbackLoader: 'vue-style-loader'
           })
-          // stylus: 'vue-style!css?{discardComments:{removeAll:true}}!stylus'
         }
       }
     }),
@@ -89,25 +90,26 @@ module.exports = {
         collapseWhitespace: true
       }
     }),
-    new ExtractTextPlugin(isProd ? 'build.[hash].css' : 'build.css')
+    new ExtractTextPlugin({
+      filename: isProd ? 'build.[hash].css' : 'build.css',
+      disable: false,
+      allChunks: true
+    })
   ],
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    colors: true,
     contentBase: 'dist/',
     host: '0.0.0.0'
   },
   devtool: isProd ? false : '#eval-source-map'
 }
 
+// production build setting
 if (isProd) {
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
