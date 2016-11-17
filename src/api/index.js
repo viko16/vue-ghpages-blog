@@ -2,7 +2,7 @@ import axios from 'axios'
 import 'es6-promise/auto'
 
 import conf from '../conf.json'
-import { objReduce, onlyTitle, onlyDate } from '../utils'
+import { onlyTitle, onlyDate } from '../utils'
 
 /**
  * Format GitHub Api url for content list
@@ -39,12 +39,12 @@ export default {
         .then(res => res.data)
         .then(arr => {
           // Data cleaning
-          const list = arr.map(els => objReduce(els, ['name', 'sha', 'size']))
-                        .map(el => {
-                          el.title = onlyTitle(el.name)
-                          el.date = onlyDate(el.name)
-                          return el
-                        })
+          const list = arr.map(({name, sha, size}) => ({
+            title: onlyTitle(name),
+            date: onlyDate(name),
+            sha,
+            size
+          }))
           // Save into sessionStorage
           window.sessionStorage && window.sessionStorage.setItem('list', JSON.stringify(list))
           // ..then return
