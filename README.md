@@ -14,13 +14,13 @@ A blog based on GitHub pages by Vue.js 2 + Webpack 2.
 
 This is the new version of vue-ghpages-blog.
 
-For the prev version, please see the [vue-1 branch](https://github.com/viko16/vue-ghpages-blog/tree/vue-1). 
+For the Vue 1.x version, please see the [vue-1 branch](https://github.com/viko16/vue-ghpages-blog/tree/vue-1). 
 
 新版本尚在开发中，请移步 [vue-1 分支](https://github.com/viko16/vue-ghpages-blog/tree/vue-1)。
 
 ## Features
 
-- Vue 2 / Vue-router / Vue-resource
+- Vue 2 / Vue-router / axios
 - Webpack 2 / Babel 6 / Stylus
 - No need to generate locally ( now using [TravisCI](https://travis-ci.org) )
 - Hosting on GitHub Pages
