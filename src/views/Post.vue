@@ -3,7 +3,7 @@
     <div v-if="!content">loading..</div>
     <h1 class="post-title">
       {{ title }}
-      <time pubdate="pubdate" :datetime="this.date" class="post-date">{{ this.date | timeago }}</time>
+      <time pubdate="pubdate" :datetime="formatDate(this.date)" :title="formatDate(this.date)" class="post-date">{{ this.date | timeago }}</time>
     </h1>
     <article v-if="content" v-html="htmlFromMarkdown"></article>
   </section>
@@ -12,6 +12,7 @@
 <script>
   import Vue from 'vue'
   import api from '../api'
+  import { formatDate } from '../utils'
   import conf from '../conf.json'
   import marked from 'marked'
   import Prism from 'prismjs'
@@ -77,7 +78,9 @@
             }
           })
         })
-      }
+      },
+
+      formatDate
     },
 
     watch: {

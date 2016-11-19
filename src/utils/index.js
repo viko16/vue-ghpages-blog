@@ -31,9 +31,20 @@ export function onlyTitle (title) {
  * get publish date from file name
  *
  * @export
- * @param {any} title
- * @returns
+ * @param {string} title
+ * @returns {string}
  */
 export function onlyDate (title) {
   return /^\d{4}-\d{1,2}-\d{1,2}/.exec(title)[0]
+}
+
+/**
+ * get a string representing the date portion of the given Date
+ *
+ * @export
+ * @param {string|Date} date
+ * @returns {string}
+ */
+export function formatDate (date) {
+  return new Date(date).toLocaleDateString()
 }

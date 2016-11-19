@@ -2,12 +2,12 @@
   <section class="list-view">
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
-      <li v-for="item in filteredList" class="list-item">
+      <li v-for="item in filteredList" :key="item.sha" class="list-item">
         <router-link :to="'/post/' + item.sha" class="item-title">
           {{ item.title }}
         </router-link>
         <br>
-        <time pubdate="pubdate" :datetime="item.date" class="item-date">{{ item.date | timeago }}</time>
+        <time pubdate="pubdate" :datetime="formatDate(item.date)" :title="formatDate(item.date)" class="item-date">{{ item.date | timeago }}</time>
       </li>
     </ol>
   </section>
@@ -15,6 +15,7 @@
 
 <script>
   import api from '../api'
+  import { formatDate } from '../utils'
   import conf from '../conf.json'
 
   export default {
@@ -48,7 +49,9 @@
             this.lists = lists
           })
           .catch(err => { console.error(err) })
-      }
+      },
+
+      formatDate
     },
 
     watch: {
