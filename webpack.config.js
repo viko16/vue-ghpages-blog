@@ -20,7 +20,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: isProd ? 'build.[hash].js' : 'build.js'
+    publicPath: '/',
+    filename: isProd ? 'build.[chunkhash:5].js' : 'build.js'
   },
   resolve: {
     alias: {
@@ -60,7 +61,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]?[chunkhash:5]'
         }
       }
     ],
@@ -91,7 +92,7 @@ module.exports = {
       }
     }),
     new ExtractTextPlugin({
-      filename: isProd ? 'build.[hash].css' : 'build.css',
+      filename: isProd ? 'build.[chunkhash:5].css' : 'build.css',
       disable: false,
       allChunks: true
     })

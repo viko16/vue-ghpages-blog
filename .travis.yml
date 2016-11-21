@@ -27,6 +27,7 @@ script:
 after_script:
   - cd dist
   - echo "ukn.me" > CNAME
+  - cp index.html 404.html
   - git add --all .
   - git commit --message "Automatically update from travis-ci"
   - git push --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages

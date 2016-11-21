@@ -20,6 +20,6 @@ let routes = [
 ]
 
 export default new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   routes
 })
