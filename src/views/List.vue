@@ -2,12 +2,12 @@
   <section class="list-view">
     <div v-if="!lists">loading..</div>
     <ol v-if="lists" class="list">
-      <li v-for="item in filteredList" :key="item.sha" class="list-item">
-        <router-link :to="'/post/' + item.sha" class="item-title">
-          {{ item.title }}
+      <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
+        <router-link :to="'/post/' + sha" class="item-title">
+          {{ title }}
         </router-link>
         <br>
-        <time pubdate="pubdate" :datetime="item.date | formatDate" :title="item.date | formatDate" class="item-date">{{ item.date | timeago }}</time>
+        <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
       </li>
     </ol>
   </section>
