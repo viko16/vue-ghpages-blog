@@ -6,7 +6,7 @@ import PostView from '../views/Post.vue'
 
 Vue.use(VueRouter)
 
-let routes = [
+const routes = [
   {
     path: '/',
     name: 'list',
