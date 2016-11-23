@@ -7,7 +7,7 @@
           {{ item.title }}
         </router-link>
         <br>
-        <time pubdate="pubdate" :datetime="formatDate(item.date)" :title="formatDate(item.date)" class="item-date">{{ item.date | timeago }}</time>
+        <time pubdate="pubdate" :datetime="item.date | formatDate" :title="item.date | formatDate" class="item-date">{{ item.date | timeago }}</time>
       </li>
     </ol>
   </section>
@@ -15,7 +15,6 @@
 
 <script>
   import api from '../api'
-  import { formatDate } from '../utils'
   import conf from '../conf.json'
 
   export default {
@@ -49,9 +48,7 @@
             this.lists = lists
           })
           .catch(err => { console.error(err) })
-      },
-
-      formatDate
+      }
     },
 
     watch: {
