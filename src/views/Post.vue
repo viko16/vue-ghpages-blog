@@ -13,19 +13,8 @@
   import Vue from 'vue'
   import api from '../api'
   import conf from '../conf.json'
-  import marked from 'marked'
-  import Prism from 'prismjs'
   import fm from 'front-matter'
-
-  // https://github.com/chjj/marked#options-1
-  marked.setOptions({
-    highlight (code, lang) {
-      // http://prismjs.com/extending.html#api
-      return Prism.highlight(code, Prism.languages[lang] || Prism.languages.javascript)
-    },
-    breaks: true,
-    gfm: true
-  })
+  import marked from '../utils/render.js'
 
   export default {
     name: 'postView',
