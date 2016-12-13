@@ -10,7 +10,6 @@
     </header>
     <router-view></router-view>
     <footer class="footer">
-      Copyright © {{ (new Date()).getFullYear() }} |
     </footer>
   </div>
 </template>
