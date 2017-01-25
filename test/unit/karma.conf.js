@@ -2,8 +2,6 @@
 
 var webpackConfig = require('../../webpack.config')
 
-// no need for app entry during tests
-delete webpackConfig.entry
 // use inline sourcemap for karma-sourcemap-loader
 webpackConfig.devtool = '#inline-source-map'
 

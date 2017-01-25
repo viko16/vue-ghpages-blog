@@ -38,14 +38,14 @@
     "babel-preset-stage-1": "^6.13.0",
     "chai": "^3.5.0",
     "cross-env": "^3.1.0",
-    "css-loader": "^0.25.0",
+    "css-loader": "^0.26.1",
     "eslint": "^3.7.0",
     "eslint-config-standard": "^6.0.0",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-html": "^1.5.3",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.0",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "extract-text-webpack-plugin": "^2.0.0-beta.5",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
     "inject-loader": "^3.0.0-beta2",
@@ -55,7 +55,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon-chai": "^1.2.4",
     "karma-spec-reporter": "^0.0.26",
-    "karma-webpack": "^1.8.0",
+    "karma-webpack": "^2.0.0",
     "mocha": "^3.1.2",
     "rimraf": "^2.5.4",
     "sinon": "^1.17.6",
@@ -68,8 +68,8 @@
     "vue-loader": "^10.0.0",
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "2.1.0-beta.27",
-    "webpack-dev-server": "2.1.0-beta.11"
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
   },
   "dependencies": {
     "axios": "^0.15.2",
@@ -79,7 +79,7 @@
     "normalize.css": "^5.0.0",
     "prismjs": "^1.5.1",
     "timeago.js": "^2.0.2",
-    "vue": "^2.1.0",
+    "vue": "^2.1.10",
     "vue-router": "^2.0.0"
   }
 }
