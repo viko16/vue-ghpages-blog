@@ -3,6 +3,7 @@
 [![Join the chat at https://gitter.im/viko16/vue-ghpages-blog](https://badges.gitter.im/viko16/vue-ghpages-blog.svg)](https://gitter.im/viko16/vue-ghpages-blog?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub release](https://img.shields.io/github/release/viko16/vue-ghpages-blog.svg?style=flat)](https://github.com/viko16/vue-ghpages-blog/releases/latest)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
+[![Travis](https://img.shields.io/travis/viko16/vue-ghpages-blog/develop.svg)](https://travis-ci.org/viko16/vue-ghpages-blog)
 
 A blog based on GitHub pages by Vue.js 2 + Webpack 2.
 
