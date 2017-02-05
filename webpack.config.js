@@ -34,35 +34,45 @@ module.exports = {
       {
         test: /\.vue$/,
         enforce: 'pre',
-        loader: 'eslint-loader',
+        use: ['eslint-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.js$/,
         enforce: 'pre',
-        loader: 'eslint-loader',
+        use: ['eslint-loader'],
         exclude: /node_modules/
       },
       // Loaders
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            stylus: ExtractTextPlugin.extract({
+              loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
+              fallback: 'vue-style-loader'
+            })
+          }
+        }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: ['babel-loader'],
         exclude: /node_modules/
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use: ['json-loader']
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[chunkhash:5]'
-        }
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]?[chunkhash:5]'
+          }
+        }]
       }
     ],
     noParse: [
@@ -71,16 +81,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      vue: {
-        loaders: {
-          stylus: ExtractTextPlugin.extract({
-            loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
-            fallbackLoader: 'vue-style-loader'
-          })
-        }
-      }
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'tpl.html'),
       filename: 'index.html',
