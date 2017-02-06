@@ -27,13 +27,28 @@ function getPostUrl (hash) {
   return `https://api.github.com/repos/${conf.repo}/git/blobs/${hash}`
 }
 
+// Cache processor
+const Cache = {
+  get: (key) => {
+    if (!window.sessionStorage) return false
+    return JSON.parse(window.sessionStorage.getItem(key))
+  },
+  set: (key, data) => {
+    if (!window.sessionStorage) return false
+    window.sessionStorage.setItem(key, JSON.stringify(data))
+    return true
+  },
+  has: (key) => {
+    return Boolean(window.sessionStorage && window.sessionStorage.hasOwnProperty(key))
+  }
+}
+
 export default {
 
   getList () {
-    if (window.sessionStorage &&
-      window.sessionStorage.hasOwnProperty('list')) {
-      // Read from sessionStorage
-      return Promise.resolve(JSON.parse(window.sessionStorage.getItem('list')))
+    if (Cache.has('list')) {
+      // Read from cache
+      return Promise.resolve(Cache.get('list'))
     } else {
       return axios.get(getListUrl())
         .then(res => res.data)
@@ -45,8 +60,8 @@ export default {
             sha,
             size
           }))
-          // Save into sessionStorage
-          window.sessionStorage && window.sessionStorage.setItem('list', JSON.stringify(list))
+          // Save into cache
+          Cache.set('list', list)
           // ..then return
           return list
         })
@@ -60,16 +75,15 @@ export default {
     }
     const cacheKey = 'post.' + hash
 
-    if (window.sessionStorage &&
-      window.sessionStorage.hasOwnProperty(cacheKey)) {
-      // Read from sessionStorage
-      return Promise.resolve(JSON.parse(window.sessionStorage.getItem(cacheKey)))
+    if (Cache.has(cacheKey)) {
+      // Read from cache
+      return Promise.resolve(Cache.get(cacheKey))
     } else {
       return axios.get(getPostUrl(hash), httpOpts)
         .then(res => res.data)
         .then(content => {
-          // Save into sessionStorage
-          window.sessionStorage && window.sessionStorage.setItem(cacheKey, JSON.stringify(content))
+          // Save into cache
+          Cache.set(cacheKey, content)
           // ..then return
           return content
         })
