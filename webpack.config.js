@@ -62,10 +62,6 @@ module.exports = {
         include: [resolve('src'), resolve('test')]
       },
       {
-        test: /\.json$/,
-        use: ['json-loader']
-      },
-      {
         test: /\.(png|jpg|gif|svg)$/,
         use: [{
           loader: 'file-loader',
@@ -84,7 +80,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolve('src', 'tpl.html'),
       filename: 'index.html',
-      favicon: require('./src/conf.json').favicon || false,
+      favicon: require('./src/config').favicon || false,
       minify: {
         // https://github.com/kangax/html-minifier#options-quick-reference
         removeComments: true,

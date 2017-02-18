@@ -15,7 +15,7 @@
 
 <script>
   import api from '../api'
-  import conf from '../conf.json'
+  import conf from '../config'
 
   export default {
     name: 'listView',

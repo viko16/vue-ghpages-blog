@@ -12,7 +12,7 @@
 <script>
   import Vue from 'vue'
   import api from '../api'
-  import conf from '../conf.json'
+  import conf from '../config'
   import fm from 'front-matter'
   import marked from '../utils/render.js'
 

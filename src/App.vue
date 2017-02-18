@@ -19,7 +19,7 @@
 <style lang="stylus" src="./style/index.styl"></style>
 
 <script>
-  import conf from './conf.json'
+  import conf from './config'
 
   export default {
     data () {

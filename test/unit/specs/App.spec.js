@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from '../../../src/App.vue'
 import router from '../../../src/router'
-import conf from '../../../src/conf.json'
+import conf from '../../../src/config'
 
 describe('App.vue', function () {
   it('should mount correctly', function () {

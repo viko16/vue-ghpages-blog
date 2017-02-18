@@ -25,7 +25,7 @@ http://ukn.me
 
 ## Develop
 
-**Note:** `src/conf.json` points the configurations of my personal blog. **If you fork this repository, modify it first.**  😳
+**Note:** `src/config.js` points the configurations of my personal blog. **If you fork this repository, modify it first.**  😳
 
 ```bash
 # Install dependencies
@@ -41,7 +41,7 @@ npm run test
 For the Vue 1.x version, please see the [vue-1 branch](https://github.com/viko16/vue-ghpages-blog/tree/vue-1). 
 
 ## About My Workflow
-- All the posts are stored in [viko16/writings](https://github.com/viko16/writings), while [`src/conf.json`](src/conf.json) points it.
+- All the posts are stored in [viko16/writings](https://github.com/viko16/writings), while [`src/config.js`](src/config.js) points it.
 - When I push the code to `develop` branch, [TravisCI](.travis.yml) will deploy `gh-pages` automatically.
 
 ## License
