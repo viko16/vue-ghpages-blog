@@ -12,19 +12,19 @@ cache:
   directories:
     - node_modules
 
-before_install:
+install:
+  - npm install
+
+before_script:
   - git config --global user.name "viko16"
   - git config --global user.email "16viko@gmail.com"
   - git clone --branch gh-pages https://github.com/viko16/vue-ghpages-blog.git dist
-
-install:
-  - npm install
 
 script:
   - npm test
   - npm run build
 
-after_script:
+after_success:
   - cd dist
   - echo "ukn.me" > CNAME
   - cp index.html 404.html
