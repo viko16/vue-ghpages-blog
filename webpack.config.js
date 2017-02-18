@@ -11,15 +11,14 @@ v${pkg.version} ©${new Date().getFullYear()} ${pkg.author}
 ${pkg.homepage}
 `.trim()
 
+// helper
 const isProd = process.env.NODE_ENV === 'production'
-
-const conf = require('./src/conf.json')
-const favicon = conf.favicon ? path.resolve(__dirname, './src/conf.json', conf.favicon) : false
+const resolve = (...dir) => path.resolve(__dirname, ...dir)
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: resolve('dist'),
     publicPath: '/',
     filename: isProd ? 'build.[chunkhash:5].js' : 'build.js'
   },
@@ -32,34 +31,35 @@ module.exports = {
     rules: [
       // preLoaders
       {
-        test: /\.vue$/,
+        test: /\.(js|vue)$/,
         enforce: 'pre',
-        use: ['eslint-loader'],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['eslint-loader'],
-        exclude: /node_modules/
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            formatter: require('eslint-friendly-formatter')
+          }
+        }],
+        include: [resolve('src'), resolve('test')]
       },
       // Loaders
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            stylus: ExtractTextPlugin.extract({
-              loader: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
-              fallback: 'vue-style-loader'
-            })
+        use: {
+          loader: 'vue-loader',
+          options: {
+            loaders: {
+              stylus: ExtractTextPlugin.extract({
+                use: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
+                fallback: 'vue-style-loader'
+              })
+            }
           }
         }
       },
       {
         test: /\.js$/,
         use: ['babel-loader'],
-        exclude: /node_modules/
+        include: [resolve('src'), resolve('test')]
       },
       {
         test: /\.json$/,
@@ -82,14 +82,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'tpl.html'),
+      template: resolve('src', 'tpl.html'),
       filename: 'index.html',
-      favicon: favicon,
+      favicon: require('./src/conf.json').favicon || false,
       minify: {
         // https://github.com/kangax/html-minifier#options-quick-reference
         removeComments: true,
         collapseWhitespace: true
-      }
+      },
+      chunksSortMode: 'dependency'
     }),
     new ExtractTextPlugin({
       filename: isProd ? 'build.[chunkhash:5].css' : 'build.css',
