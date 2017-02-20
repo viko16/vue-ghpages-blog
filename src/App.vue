@@ -3,16 +3,10 @@
     <header class="header">
       <router-link to="/">{{ title }}</router-link>
       <div style="clear: both"></div>
-      <input class="search-bar" placeholder="Search.."
-        ref="searchBar" v-model="keyword"
-        @click="selectSearchText"
-        @keyup.esc="resetSearch">
+      <search-bar></search-bar>
     </header>
     <router-view></router-view>
-    <footer class="footer">
-      Copyright © {{ (new Date()).getFullYear() }} |
-      Powered by <a href="https://github.com/viko16/vue-ghpages-blog" target="_blank">vue-ghpages-blog</a>
-    </footer>
+    <footer-bar></footer-bar>
   </div>
 </template>
 
@@ -20,31 +14,18 @@
 
 <script>
   import conf from './config'
+  import footerBar from './components/footerBar.vue'
+  import searchBar from './components/searchBar.vue'
 
   export default {
     data () {
       return {
-        title: conf.blogTitle,
-        keyword: ''
+        title: conf.blogTitle
       }
     },
-    methods: {
-      resetSearch () {
-        this.keyword = ''
-        this.$refs.searchBar.blur()
-      },
-      selectSearchText () {
-        this.$refs.searchBar.select()
-      }
-    },
-    watch: {
-      'keyword' () {
-        if (this.keyword) {
-          this.$router.push({name: 'list', query: { keyword: this.keyword }})
-        } else {
-          this.$router.push({name: 'list'})
-        }
-      }
+    components: {
+      footerBar,
+      searchBar
     }
   }
 </script>
