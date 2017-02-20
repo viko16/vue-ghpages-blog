@@ -50,7 +50,10 @@
             // Set window title
             window.document.title = `${this.title} - ${conf.blogTitle}`
           })
-          .catch(err => { console.error(err) })
+          .catch(err => {
+            console.error(err)
+            this.$router.replace('/')
+          })
       },
 
       newTab () {
