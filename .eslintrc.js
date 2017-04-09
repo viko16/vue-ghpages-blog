@@ -1,14 +1,13 @@
 module.exports = {
-  'root': true,
-  'extends': 'standard',
-  'env': {
-    'node': true,
-    'browser': true
+  root: true,
+  extends: 'standard',
+  env: {
+    browser: true
   },
-  'plugins': [
+  plugins: [
     'html'
   ],
-  'rule': {
+  rule: {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
