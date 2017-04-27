@@ -1,8 +1,8 @@
 <template>
   <section class="list-view">
     <div class="loading" v-if="loading">loading..</div>
-    <div class="no-content" v-if="!filteredList.length">nothing..</div>
-    <ol v-if="!!filteredList.length" class="list">
+    <div class="no-content" v-else-if="filteredList.length === 0">nothing..</div>
+    <ol v-else class="list">
       <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
         <router-link :to="'/post/' + sha" class="item-title">
           {{ title }}
@@ -24,13 +24,16 @@
     data () {
       return {
         lists: [],
-        loading: false
+        loading: true
       }
     },
 
     computed: {
       filteredList () {
-        let keyword = (this.$route.query.q || '').toLowerCase()
+        let keyword = ''
+        if (this.$route) {
+          keyword = (this.$route.query.q || '').toLowerCase()
+        }
         // Filter by title, Order by publish date, desc
         return this.lists
           .filter(item => (item.title.toLowerCase().indexOf(keyword) !== -1))
@@ -48,8 +51,8 @@
         window.document.title = conf.blogTitle
         api.getList()
           .then(lists => {
-            this.lists = lists
             this.loading = false
+            this.lists = lists
           })
           .catch(err => {
             this.loading = false
