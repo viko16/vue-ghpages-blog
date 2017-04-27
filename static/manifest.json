@@ -1,0 +1,14 @@
+{
+  "name": "Unknow Me",
+  "short_name": "ukn.me",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "icons": [{
+    "src": "favicon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }]
+}

@@ -3,7 +3,7 @@ module.exports = {
    * Output
    */
   blogTitle: 'Unknow Me',
-  favicon: null,
+  favicon: './static/favicon.png',
 
   /**
    * API

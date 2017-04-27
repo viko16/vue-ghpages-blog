@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const pkg = require('./package.json')
 // Adds a banner to the top of each generated chunk.
@@ -118,6 +119,13 @@ if (isProd) {
         comments: false
       }
     }),
-    new webpack.BannerPlugin(banner)
+    new webpack.BannerPlugin(banner),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('static'),
+        to: resolve('dist'),
+        ignore: ['.*']
+      }
+    ])
   ])
 }
