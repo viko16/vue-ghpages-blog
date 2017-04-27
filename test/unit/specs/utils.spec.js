@@ -3,7 +3,7 @@
 import {
   onlyTitle,
   onlyDate
-} from '../../../src/utils'
+} from '@/utils'
 
 describe('Utils', function () {
   const title = '2015-02-25-Chrome for Mac.md'

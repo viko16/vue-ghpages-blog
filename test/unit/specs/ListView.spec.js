@@ -1,7 +1,7 @@
 'use strict'
 
 import Vue from 'vue'
-import ListView from '../../../src/views/List.vue'
+import ListView from '@/views/List.vue'
 
 describe('List.vue', function () {
   it('should have a created hook', function () {
@@ -9,16 +9,15 @@ describe('List.vue', function () {
   })
 
   it('should get loading text when have no item', function () {
-    const vm = new Vue({
-      template: '<div><list-view></list-view></div>',
-      components: { ListView }
-    }).$mount()
+    const Constructor = Vue.extend(ListView)
+    const vm = new Constructor().$mount()
     expect(vm.$el.textContent.trim()).to.eql('loading..')
   })
 
   // FIXME, error: __vue_exports__ is not a function
-  it.skip('should get render with mocked message', function () {
-    const inject = require('!!vue?inject!../../../src/views/List.vue')
+  it('should get render with mocked message', function () {
+    // eslint-disable-next-line
+    const inject = require('!!vue?inject!@/views/List.vue')
     const ListViewWithMock = inject({
       '../api': {
         getList () {
@@ -58,5 +57,6 @@ describe('List.vue', function () {
     }).$mount()
     expect(vm.$el.querySelector('.list')).to.be.true
     expect(vm.$el.querySelectorAll('.list-item').length).to.equal(3)
+    console.log(vm.$el)
   })
 })

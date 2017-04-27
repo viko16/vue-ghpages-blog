@@ -18,11 +18,14 @@
   import searchBar from './components/searchBar.vue'
 
   export default {
+    name: 'app',
+
     data () {
       return {
         title: conf.blogTitle
       }
     },
+
     components: {
       footerBar,
       searchBar

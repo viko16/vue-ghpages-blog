@@ -10,9 +10,11 @@ filter(Vue)
 // false in production builds
 Vue.config.devtools = process.env.NODE_ENV !== 'production'
 
-// create the app instance and mount to #app
-const app = new Vue(
-  Vue.util.extend({ router }, App)
-).$mount('#app')
+const app = new Vue({
+  el: '#app',
+  router,
+  template: '<App />',
+  components: { App }
+})
 
 export { app, router }
