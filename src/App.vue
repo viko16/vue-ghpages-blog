@@ -3,7 +3,7 @@
     <header class="header">
       <router-link to="/">{{ title }}</router-link>
       <div style="clear: both"></div>
-      <search-bar></search-bar>
+      <search-bar v-if="isPageList"></search-bar>
     </header>
     <router-view></router-view>
     <footer-bar></footer-bar>
@@ -23,6 +23,12 @@
     data () {
       return {
         title: conf.blogTitle
+      }
+    },
+
+    computed: {
+      isPageList () {
+        return this.$route.name === 'list'
       }
     },
 

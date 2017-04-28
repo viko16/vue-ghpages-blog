@@ -4,7 +4,6 @@
   placeholder="Search.."
   type="search"
   ref="searchBar"
-  v-show="isPageList"
   v-model="keyword"
   @click="selectSearchText"
   @keyup.esc="resetSearch">
@@ -19,14 +18,8 @@
       }
     },
 
-    computed: {
-      isPageList () {
-        return this.$route.name === 'list'
-      }
-    },
-
     created () {
-      this.keyword = this.$route.query.q
+      this.keyword = this.$route.query.q || ''
     },
 
     methods: {
