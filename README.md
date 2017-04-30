@@ -6,7 +6,7 @@
 [![Travis][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
-A blog based on GitHub pages by Vue.js 2 + webpack 2.
+✏️ A blog based on GitHub Pages built with Vue.js 2 + webpack 2.
 
 一个依赖 GitHub Pages，无需本地生成的静态博客，使用了 Vue.js 2 组件开发，webpack 2 打包。
 
