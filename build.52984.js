@@ -1,5 +1,5 @@
 /*!
- * A blog based on GitHub Pages by Vue.js 2 + webpack 2
+ * A blog based on GitHub Pages built with Vue.js 2 + webpack 2
  * v1.2.0 ©2017 viko16 (https://github.com/viko16)
  * https://github.com/viko16/vue-ghpages-blog#readme
  */
