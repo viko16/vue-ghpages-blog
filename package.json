@@ -1,10 +1,10 @@
 {
   "name": "vue-ghpages-blog",
+  "description": "A blog based on GitHub Pages built with Vue.js 2 + webpack 2",
   "version": "1.2.0",
-  "description": "A blog based on GitHub Pages by Vue.js 2 + webpack 2",
   "main": "src/main.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "webpack-dev-server --inline --hot --open",
     "prebuild": "rimraf dist/*",
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "lint": "eslint --ext \".js, .vue\" src test --fix",
@@ -36,7 +36,6 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.3.3",
-    "babel-preset-stage-2": "^6.23.0",
     "chai": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^4.0.0",
