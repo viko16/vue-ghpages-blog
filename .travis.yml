@@ -18,7 +18,7 @@ install:
 before_script:
   - git config --global user.name "viko16"
   - git config --global user.email "16viko@gmail.com"
-  - git clone --branch gh-pages https://github.com/viko16/vue-ghpages-blog.git dist
+  - git clone --branch gh-pages ${GH_REF} dist
 
 script:
   - npm test
@@ -30,9 +30,10 @@ after_success:
   - cp index.html 404.html
   - git add --all .
   - git commit --message "Automatically update from travis-ci"
-  - git push --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
+  - git push --quiet "${GH_TOKEN}@${GH_REF}" gh-pages:gh-pages
 
+# Note: you should set Environment Variables here or 'Settings'' on travis-ci.org
 env:
   global:
-    - GH_REF: github.com/viko16/vue-ghpages-blog.git
-    - secure: "Ga35y0yj/BYNE0CS7zh+fHMPVLqAbKEvrmRKUHvN176nUtIKveDLLI0lKpnGFfDxDM8Aj5QVcQBnhHRqpLv9LpjO6RTT1/s5dq0wa8cz1zw3j9wLSBJ1jtJwq5ZZwpf7Nl1bjG+NFk9sIVFMT5rGMKxHXcZdcuoDxQOEFPT4H2cWpKlH3z2JeA2sBJXhOmUuL9frqiy9iJXtIFIW36liDE1C3gDTunQ2+dAvikd2rpuMDYc7HbuhlF5zLGR15bHJN7aBfQq5g/AheVgq4EbdzZYsxU1U5ObpZq8jP+h2ej1ZiNqor8yc3/pawQdiP5xlq75FEkPXKcnbQj+0/btWCRtFwMKbMiPF8kByBMxaLteR5IjLmJM2/GMIbXFtJyFcm9TciqpjmZGAdA2F/dJeM86bPB+lOPqZ0KkaOAmvIG6zrv4r18kpvVuVgUMqSsGVRM1mgV4FTSeLOCnLCGfkudszhkT0sJ+0O+9R3lqVFiXLF9g1F7M9Kezb3Uw3sA6Nxq0I0qzf9xob42ybgBHSmKDYX587Rk7bwI76VhZjw/BIeCNiAz3TbSZ8CGhg4vMzmKH76zjx35L8jUQCrijTX3NbznUHiLWK1aQ6dXgSaxghhiP0HlwnaM0+bqGw249NHe2Jj/M7xdo4/PdionllmIB1bQH6ktXZ7nTGaOwxJTw="
+    - GH_REF: https://github.com/viko16/vue-ghpages-blog.git
+    # - GH_TOKEN: 'Your GitHub Personal access tokens, via https://github.com/settings/tokens'
