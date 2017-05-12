@@ -16,7 +16,7 @@ ${pkg.homepage}
 const isProd = process.env.NODE_ENV === 'production'
 const resolve = (...dir) => path.resolve(__dirname, ...dir)
 
-module.exports = {
+const config = {
   entry: './src/main.js',
   output: {
     path: resolve('dist'),
@@ -97,17 +97,18 @@ module.exports = {
     })
   ],
   devServer: {
+    compress: true,
+    contentBase: resolve('static'),
     historyApiFallback: true,
-    noInfo: true,
-    contentBase: 'dist/',
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    noInfo: true
   },
-  devtool: isProd ? false : '#eval-source-map'
+  devtool: isProd ? '#cheap-module-source-map' : '#eval-source-map'
 }
 
 // production build setting
 if (isProd) {
-  module.exports.plugins = (module.exports.plugins || []).concat([
+  config.plugins = (config.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -129,3 +130,5 @@ if (isProd) {
     ])
   ])
 }
+
+module.exports = config
