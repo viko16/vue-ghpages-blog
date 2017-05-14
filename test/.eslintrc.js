@@ -7,8 +7,7 @@ module.exports = {
     'chai-friendly'
   ],
   globals: {
-    expect: true,
-    sinon: true
+    expect: true
   },
   rules: {
     'no-unused-expressions': 0,

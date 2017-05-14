@@ -8,7 +8,7 @@ webpackConfig.devtool = '#inline-source-map'
 module.exports = function (config) {
   config.set({
     browsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai'],
+    frameworks: ['mocha', 'chai'],
     reporters: ['spec'],
     files: ['./index.js'],
     preprocessors: {
