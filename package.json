@@ -9,7 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack -p --progress --hide-modules",
     "lint": "eslint --ext \".js, .vue\" src test --fix",
     "test:unit": "cross-env NODE_ENV=testing karma start test/unit/karma.conf.js",
-    "test:e2e": "npm run build && mocha --opts test/e2e/mocha.opts",
+    "test:e2e": "webpack -p && mocha --opts test/e2e/mocha.opts",
     "pretest": "npm run lint",
     "test": "npm run test:unit && npm run test:e2e"
   },
