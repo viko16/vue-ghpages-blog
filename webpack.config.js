@@ -25,7 +25,7 @@ const config = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.common.js',
+      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src')
     }
   },
@@ -51,7 +51,7 @@ const config = {
           options: {
             loaders: {
               stylus: ExtractTextPlugin.extract({
-                use: 'css-loader?{discardComments:{removeAll:true}}!stylus-loader',
+                use: 'css-loader?{"minimize":{"discardComments":{"removeAll":true}}}!stylus-loader',
                 fallback: 'vue-style-loader'
               })
             }
