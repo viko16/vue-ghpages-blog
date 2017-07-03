@@ -13,8 +13,7 @@ Vue.config.devtools = process.env.NODE_ENV !== 'production'
 const app = new Vue({
   el: '#app',
   router,
-  template: '<App />',
-  components: { App }
+  render: h => h(App)
 })
 
 export { app, router }
