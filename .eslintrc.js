@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     'html'
   ],
-  rule: {
+  rules: {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
