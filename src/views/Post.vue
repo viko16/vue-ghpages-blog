@@ -59,7 +59,7 @@
       newTab () {
         Vue.nextTick(function () {
           // Load the external link into new tab
-          const linksArray = Array.from(document.querySelectorAll('a'))
+          const linksArray = [...document.querySelectorAll('a')]
           const currentHost = window.location.host
           linksArray.forEach(el => {
             if (el.href && el.host !== currentHost) {
