@@ -1,6 +1,6 @@
 {
   "name": "vue-ghpages-blog",
-  "description": "A blog based on GitHub Pages built with Vue.js 2 + webpack 2",
+  "description": "A blog based on GitHub Pages built with Vue.js 2 + webpack 3",
   "version": "1.3.0",
   "main": "src/main.js",
   "scripts": {
@@ -53,8 +53,8 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^3.0.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.11.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.0.0",
     "html-webpack-plugin": "^2.22.0",
     "http-server": "^0.10.0",
     "inject-loader": "^3.0.0",

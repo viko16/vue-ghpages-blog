@@ -6,16 +6,16 @@
 [![Travis][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
-✏️ A blog based on GitHub Pages built with Vue.js 2 + webpack 2.
+✏️ A blog based on GitHub Pages built with Vue.js 2 + webpack 3.
 
-一个依赖 GitHub Pages，无需本地生成的静态博客，使用了 Vue.js 2 组件开发，webpack 2 打包。
+一个依赖 GitHub Pages，无需本地生成的静态博客，使用了 Vue.js 2 组件开发，webpack 3 打包。
 
 ![Post Screenshots](https://cloud.githubusercontent.com/assets/5064777/19349059/a815395c-9183-11e6-97c3-56514acf0f1d.png)
 
 ## Features
 
 - Vue 2 / Vue-router / axios
-- webpack 2 / Babel 6 / Stylus
+- webpack 3 / Babel 6 / Stylus
 - No need to generate locally ( now using [TravisCI](https://travis-ci.org) )
 - Hosting on GitHub Pages
 - SessionStorage cache
