@@ -41,22 +41,21 @@
       }
     },
 
-    created () {
+    mounted () {
+      window.document.title = conf.blogTitle
       this.loadList()
     },
 
     methods: {
       loadList () {
         this.loading = true
-        window.document.title = conf.blogTitle
         api.getList()
           .then(lists => {
             this.loading = false
             this.lists = lists
-          })
-          .catch(err => {
+          }, err => {
             this.loading = false
-            console.error(err)
+            console.info('[getList]', err)
           })
       }
     },
