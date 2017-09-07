@@ -1,9 +1,27 @@
 'use strict'
 
-var webpackConfig = require('../../webpack.config')
+var webpack = require('webpack')
+var merge = require('webpack-merge')
+var baseConfig = require('../../webpack.config')
 
-// use inline sourcemap for karma-sourcemap-loader
-webpackConfig.devtool = '#inline-source-map'
+var webpackConfig = merge(baseConfig, {
+  // no need for app entry during tests
+  entry: undefined,
+  // use inline sourcemap for karma-sourcemap-loader
+  devtool: '#inline-source-map',
+  // use compiler-included build
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.min.js'
+    }
+  },
+  // testing env
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('testing')
+    })
+  ]
+})
 
 module.exports = function (config) {
   config.set({

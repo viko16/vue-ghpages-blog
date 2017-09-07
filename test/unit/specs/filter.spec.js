@@ -1,19 +1,17 @@
 'use strict'
 
-// use compiler-included build
-import Vue from 'vue/dist/vue.min.js'
-import filter from '@/utils/filter'
+import Vue from 'vue'
 
-// setup Vue filter
-filter(Vue)
+// NOTE: global filter have been registered in `test/unit/index.js`
 
 describe('Custom filter', function () {
   describe('timeago', function () {
-    const getVm = msg => {
-      return new Vue({
+    const getRenderedText = msg => {
+      const vm = new Vue({
         template: '<div>{{ msg | timeago }}</div>',
         data: { msg }
       }).$mount()
+      return vm.$el.textContent
     }
 
     it('should get the filter if registered', function () {
@@ -22,22 +20,23 @@ describe('Custom filter', function () {
     })
 
     it('should format the date in chinese', function () {
-      const vm = getVm(Date.now())
-      expect(vm.$el.textContent).to.equal('刚刚')
+      expect(getRenderedText(Date.now())).to.equal('刚刚')
     })
 
     it('should get empty string when passed bad args', function () {
-      const vm = getVm('')
-      expect(vm.$el.textContent).to.equal('')
+      expect(getRenderedText(undefined)).to.equal('')
+      expect(getRenderedText(null)).to.equal('')
+      expect(getRenderedText('')).to.equal('')
     })
   })
 
   describe('formatDate', function () {
-    const getVm = msg => {
-      return new Vue({
+    const getRenderedText = msg => {
+      const vm = new Vue({
         template: '<div>{{ msg | formatDate }}</div>',
         data: { msg }
       }).$mount()
+      return vm.$el.textContent
     }
 
     it('should get the filter if registered', function () {
@@ -47,9 +46,8 @@ describe('Custom filter', function () {
 
     it('should effect like built-in', function () {
       const val = '1504707097000'
-      const vm = getVm(val)
       const expected = new Date(val).toLocaleDateString()
-      expect(vm.$el.textContent).to.equal(expected)
+      expect(getRenderedText(val)).to.equal(expected)
     })
   })
 })
