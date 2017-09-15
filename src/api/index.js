@@ -8,7 +8,7 @@ import { onlyTitle, onlyDate } from '../utils'
  * Format GitHub Api url for content list
  * @returns {string}
  */
-function getListUrl () {
+export function getListUrl () {
   // @see https://developer.github.com/v3/repos/contents/#get-contents
   // @example https://api.github.com/repos/viko16/vue-ghpages-blog/contents/markdown?ref=markdown
   let url = `https://api.github.com/repos/${conf.repo}/contents/`
@@ -22,10 +22,12 @@ function getListUrl () {
  * @param {string} hash
  * @returns {string}
  */
-function getPostUrl (hash) {
+export function getPostUrl (hash) {
   // @see https://developer.github.com/v3/git/blobs/#get-a-blob
   return `https://api.github.com/repos/${conf.repo}/git/blobs/${hash}`
 }
+
+export { axios as axiosInstance }
 
 // Cache processor
 const Cache = {

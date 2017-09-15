@@ -1,0 +1,70 @@
+---
+title: MOCK Python JSON 转换的坑
+date: 2015-03-18
+---
+
+## 原因
+搞了一下午，发现是特殊字符导致`json.loads(str)`报错
+而用习惯的 `.decode('utf-8','ignore').encode('utf-8')`也无法解决
+
+无奈之下，只能自己写方法替换掉
+
+## 代码
+```python
+def clean_str(str):
+    asc2 = ('0x00','0x01','0x02','0x03','0x04','0x05','0x06','0x07','0x08','0x09','0x09','0x0a','0x0a','0x0b','0x0c','0x0d','0x0e','0x0f','0x10','0x11','0x12','0x13','0x14','0x15','0x16','0x17','0x18','0x19','0x1a','0x1b','0x1c','0x1d','0x1e','0x1f','0x20','0x7f')
+    for x in asc2:
+        str = str.replace(unichr(int(x, 16)),'')
+    return str
+```
+原理是列举这些特殊字符串的 ascii 码，转成 unicode 再移除
+然后才能正常的 json.loads
+`json.loads(clean_str(str))`
+
+## 附
+特殊字符表：
+
+>NUL	= 0x00	# ^@
+SOH	= 0x01	# ^A
+STX	= 0x02	# ^B
+ETX	= 0x03	# ^C
+EOT	= 0x04	# ^D
+ENQ	= 0x05	# ^E
+ACK	= 0x06	# ^F
+BEL	= 0x07	# ^G
+BS	= 0x08	# ^H
+TAB	= 0x09	# ^I
+HT	= 0x09	# ^I
+LF	= 0x0a	# ^J
+NL	= 0x0a	# ^J
+VT	= 0x0b	# ^K
+FF	= 0x0c	# ^L
+CR	= 0x0d	# ^M
+SO	= 0x0e	# ^N
+SI	= 0x0f	# ^O
+DLE	= 0x10	# ^P
+DC1	= 0x11	# ^Q
+DC2	= 0x12	# ^R
+DC3	= 0x13	# ^S
+DC4	= 0x14	# ^T
+NAK	= 0x15	# ^U
+SYN	= 0x16	# ^V
+ETB	= 0x17	# ^W
+CAN	= 0x18	# ^X
+EM	= 0x19	# ^Y
+SUB	= 0x1a	# ^Z
+ESC	= 0x1b	# ^[
+FS	= 0x1c	# ^\
+GS	= 0x1d	# ^]
+RS	= 0x1e	# ^^
+US	= 0x1f	# ^_  
+SP	= 0x20	# space
+DEL	= 0x7f	# delete
+
+## 参考
+<http://blog.chinaunix.net/uid-20372841-id-1695775.html>
+
+## 最后的吐槽
+- 为毛有人的微信信息里面有特殊字符串！！！
+- 为毛企鹅还允许它提交！！！
+- 为毛企鹅自己不处理了反而原样直接返回！！！！

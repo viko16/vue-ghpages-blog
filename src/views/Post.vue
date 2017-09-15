@@ -51,7 +51,7 @@
             window.document.title = `${this.title} - ${conf.blogTitle}`
           })
           .catch(err => {
-            console.error(err)
+            console.error('[getDetail]', err)
             this.$router.replace('/')
           })
       },

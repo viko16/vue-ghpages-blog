@@ -35,6 +35,7 @@
   "homepage": "https://github.com/viko16/vue-ghpages-blog#readme",
   "devDependencies": {
     "avoriaz": "^4.1.0",
+    "axios-mock-adapter": "^1.9.0",
     "babel-core": "^6.0.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -69,6 +70,7 @@
     "lodash": "^4.17.4",
     "mocha": "^3.1.2",
     "nightmare": "^2.10.0",
+    "raw-loader": "^0.5.1",
     "rimraf": "^2.5.4",
     "sinon": "^3.2.1",
     "style-loader": "^0.18.0",
