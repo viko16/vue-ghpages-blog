@@ -5,17 +5,14 @@
     "target": "es6",
     "module": "commonjs",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@": ["src/"],
       "@/*": ["src/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "temp",
-    "dist",
-    "static"
+  "include": [
+    "./src/**/*",
+    "./test/**/*"
   ]
 }
