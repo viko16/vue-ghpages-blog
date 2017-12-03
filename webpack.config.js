@@ -53,7 +53,8 @@ const config = {
                 use: 'css-loader?{"minimize":{"discardComments":{"removeAll":true}}}!stylus-loader',
                 fallback: 'vue-style-loader'
               })
-            }
+            },
+            esModule: false
           }
         }
       },
