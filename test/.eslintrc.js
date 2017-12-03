@@ -1,7 +1,14 @@
 module.exports = {
-  extends: 'standard',
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/recommended'
+  ],
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   env: {
-    mocha: true
+    mocha: true,
+    node: true
   },
   plugins: [
     'chai-friendly'
@@ -11,6 +18,7 @@ module.exports = {
   },
   rules: {
     'no-unused-expressions': 0,
-    'chai-friendly/no-unused-expressions': 2
+    'chai-friendly/no-unused-expressions': 2,
+    'comma-dangle': 2
   }
 }

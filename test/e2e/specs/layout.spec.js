@@ -17,7 +17,7 @@ describe('Layout', function () {
       nightmare
         .goto(base)
         .end()
-        .then(_ => done())
+        .then(() => done())
         .catch(done)
     })
 

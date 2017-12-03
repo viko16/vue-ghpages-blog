@@ -1,14 +1,29 @@
 <template>
   <section class="list-view">
-    <div class="loading" v-if="loading">loading..</div>
-    <div class="no-content" v-else-if="filteredList.length === 0">nothing..</div>
-    <ol v-else class="list">
-      <li v-for="{ title, sha, date } in filteredList" :key="sha" class="list-item">
-        <router-link :to="'/post/' + sha" class="item-title">
+    <div
+      class="loading"
+      v-if="loading">loading..</div>
+    <div
+      class="no-content"
+      v-else-if="filteredList.length === 0">nothing..</div>
+    <ol
+      v-else
+      class="list">
+      <li
+        v-for="{ title, sha, date } in filteredList"
+        :key="sha"
+        class="list-item">
+        <router-link
+          :to="'/post/' + sha"
+          class="item-title">
           {{ title }}
         </router-link>
         <br>
-        <time pubdate="pubdate" :datetime="date | formatDate" :title="date | formatDate" class="item-date">{{ date | timeago }}</time>
+        <time
+          pubdate="pubdate"
+          :datetime="date | formatDate"
+          :title="date | formatDate"
+          class="item-date">{{ date | timeago }}</time>
       </li>
     </ol>
   </section>
@@ -19,7 +34,7 @@
   import conf from '../config'
 
   export default {
-    name: 'listView',
+    name: 'ListView',
 
     data () {
       return {
@@ -41,6 +56,10 @@
       }
     },
 
+    watch: {
+      '$route': 'loadList'
+    },
+
     mounted () {
       window.document.title = conf.blogTitle
       this.loadList()
@@ -55,14 +74,12 @@
             this.lists = lists
           }, err => {
             this.loading = false
+            // eslint-disable-next-line no-console
             console.info('[getList]', err)
           })
       }
-    },
-
-    watch: {
-      '$route': 'loadList'
     }
 
   }
+
 </script>

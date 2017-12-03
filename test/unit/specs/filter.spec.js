@@ -6,10 +6,10 @@ import Vue from 'vue'
 
 describe('Custom filter', function () {
   describe('timeago', function () {
-    const getRenderedText = msg => {
+    const getRenderedText = msg1 => {
       const vm = new Vue({
-        template: '<div>{{ msg | timeago }}</div>',
-        data: { msg }
+        data: { msg1 },
+        template: '<div>{{ msg1 | timeago }}</div>'
       }).$mount()
       return vm.$el.textContent
     }
@@ -31,10 +31,10 @@ describe('Custom filter', function () {
   })
 
   describe('formatDate', function () {
-    const getRenderedText = msg => {
+    const getRenderedText = msg2 => {
       const vm = new Vue({
-        template: '<div>{{ msg | formatDate }}</div>',
-        data: { msg }
+        data: { msg2 },
+        template: '<div>{{ msg2 | formatDate }}</div>'
       }).$mount()
       return vm.$el.textContent
     }

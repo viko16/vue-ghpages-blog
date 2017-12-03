@@ -1,12 +1,12 @@
 <template>
   <input
-  class="searchbar-input"
-  placeholder="Search.."
-  type="search"
-  ref="searchBar"
-  v-model="keyword"
-  @click="selectSearchText"
-  @keyup.esc="resetSearch">
+    class="searchbar-input"
+    placeholder="Search.."
+    type="search"
+    ref="searchBar"
+    v-model="keyword"
+    @click="selectSearchText"
+    @keyup.esc="resetSearch">
 </template>
 
 <script>
@@ -16,6 +16,10 @@
       return {
         keyword: ''
       }
+    },
+
+    watch: {
+      'keyword': 'updateQuery'
     },
 
     created () {
@@ -37,10 +41,6 @@
           this.$router.push({name: 'list', query: null})
         }
       }
-    },
-
-    watch: {
-      'keyword': 'updateQuery'
     }
 
   }

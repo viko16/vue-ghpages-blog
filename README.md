@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/viko16/vue-ghpages-blog][gitter-image]][gitter-url]
 [![GitHub release][github-release-image]][github-release-url]
-[![JavaScript Style Guide][standardjs-image]][standardjs-url]
+[![JavaScript Style Guide][linting-image]][linting-url]
 [![Travis][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
@@ -54,8 +54,8 @@ MIT © [viko16](https://github.com/viko16)
 [gitter-url]: https://gitter.im/viko16/vue-ghpages-blog?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [github-release-image]: https://img.shields.io/github/release/viko16/vue-ghpages-blog.svg?style=flat
 [github-release-url]: https://github.com/viko16/vue-ghpages-blog/releases/latest
-[standardjs-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat
-[standardjs-url]: http://standardjs.com/
+[linting-image]: https://img.shields.io/badge/Linting-eslint--plugin--vue-brightgreen.svg?style=flat
+[linting-url]: https://github.com/vuejs/eslint-plugin-vue
 [travis-image]: https://img.shields.io/travis/viko16/vue-ghpages-blog/develop.svg
 [travis-url]: https://travis-ci.org/viko16/vue-ghpages-blog
 [daviddm-image]: https://david-dm.org/viko16/vue-ghpages-blog.svg?theme=shields.io

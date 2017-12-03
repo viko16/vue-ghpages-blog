@@ -3,9 +3,15 @@
     <div v-if="!content">loading..</div>
     <h1 class="post-title">
       {{ title }}
-      <time pubdate="pubdate" :datetime="this.date | formatDate" :title="this.date | formatDate" class="post-date">{{ this.date | timeago }}</time>
+      <time
+        pubdate="pubdate"
+        :datetime="date | formatDate"
+        :title="date | formatDate"
+        class="post-date">{{ date | timeago }}</time>
     </h1>
-    <article v-if="content" v-html="htmlFromMarkdown"></article>
+    <article
+      v-if="content"
+      v-html="htmlFromMarkdown" />
   </section>
 </template>
 
@@ -17,7 +23,7 @@
   import marked from '../utils/render.js'
 
   export default {
-    name: 'postView',
+    name: 'PostView',
 
     data () {
       return {
@@ -31,6 +37,10 @@
       htmlFromMarkdown () {
         return marked(this.content)
       }
+    },
+
+    watch: {
+      'htmlFromMarkdown': 'newTab'
     },
 
     created () {
@@ -51,6 +61,7 @@
             window.document.title = `${this.title} - ${conf.blogTitle}`
           })
           .catch(err => {
+            // eslint-disable-next-line no-console
             console.error('[getDetail]', err)
             this.$router.replace('/')
           })
@@ -70,10 +81,7 @@
           })
         })
       }
-    },
-
-    watch: {
-      'htmlFromMarkdown': 'newTab'
     }
+
   }
 </script>

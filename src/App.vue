@@ -1,12 +1,12 @@
 <template>
-  <div id='app'>
+  <div id="app">
     <header class="header">
       <router-link to="/">{{ title }}</router-link>
-      <div style="clear: both"></div>
-      <search-bar v-if="isPageList"></search-bar>
+      <div style="clear: both"/>
+      <search-bar v-if="isPageList"/>
     </header>
-    <router-view></router-view>
-    <footer-bar></footer-bar>
+    <router-view/>
+    <footer-bar/>
   </div>
 </template>
 
@@ -18,7 +18,12 @@
   import searchBar from './components/searchBar.vue'
 
   export default {
-    name: 'app',
+    name: 'App',
+
+    components: {
+      footerBar,
+      searchBar
+    },
 
     data () {
       return {
@@ -30,11 +35,7 @@
       isPageList () {
         return this.$route.name === 'list'
       }
-    },
-
-    components: {
-      footerBar,
-      searchBar
     }
+
   }
 </script>
