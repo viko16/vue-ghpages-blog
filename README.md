@@ -5,6 +5,7 @@
 [![JavaScript Style Guide][linting-image]][linting-url]
 [![Travis][travis-image]][travis-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fviko16%2Fvue-ghpages-blog.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fviko16%2Fvue-ghpages-blog?ref=badge_shield)
 
 ✏️ A blog based on GitHub Pages built with Vue.js 2 + webpack 3.
 
@@ -60,3 +61,5 @@ MIT © [viko16](https://github.com/viko16)
 [travis-url]: https://travis-ci.org/viko16/vue-ghpages-blog
 [daviddm-image]: https://david-dm.org/viko16/vue-ghpages-blog.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/viko16/vue-ghpages-blog
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fviko16%2Fvue-ghpages-blog.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fviko16%2Fvue-ghpages-blog?ref=badge_large)
