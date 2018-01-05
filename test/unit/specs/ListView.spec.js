@@ -92,7 +92,7 @@ describe('List.vue', function () {
 
     // test the readability, format, className
     const timeEl = item.find('time')[0]
-    expect(timeEl.text()).to.equal('1年前')
+    expect(timeEl.text()).to.match(/\d+年前/)
     const expectDate = new Date(mockData[1].date).toLocaleDateString()
     expect(timeEl.getAttribute('title')).to.equal(expectDate)
     expect(timeEl.hasClass('item-date')).to.be.true
