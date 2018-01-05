@@ -87,7 +87,7 @@
     "axios": "^0.17.1",
     "es6-promise": "^4.0.0",
     "front-matter": "^2.3.0",
-    "marked": "^0.3.7",
+    "marked": "^0.3.9",
     "normalize.css": "^7.0.0",
     "prismjs": "^1.8.4",
     "timeago.js": "^3.0.0",
