@@ -3,6 +3,9 @@ module.exports = {
    * Output
    */
   blogTitle: 'Unknow Me',
+  blogDescription: "Viko's Blog",
+  blogAuthor: 'viko16',
+  blogKeywords: `Unknow Me, viko16, vue-ghpages-blog`,
   favicon: './static/favicon.png',
 
   /**

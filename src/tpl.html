@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= htmlWebpackPlugin.options.title %></title>
+
+  <meta name="application-name" content="<%= htmlWebpackPlugin.options.title %>" />
+  <meta name="keywords" content="<%= htmlWebpackPlugin.options.blogKeywords %>" />
+  <meta name="description" content="<%= htmlWebpackPlugin.options.blogDescription %>">
+  <meta name="author" content="<%= htmlWebpackPlugin.options.blogAuthor %>">
+
   <meta name="renderer" content="webkit">
   <meta name="theme-color" content="#ffffff">
   <link rel="manifest" href="/manifest.json">

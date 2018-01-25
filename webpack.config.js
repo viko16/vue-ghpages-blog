@@ -11,6 +11,7 @@ ${pkg.description}
 v${pkg.version} ©${new Date().getFullYear()} ${pkg.author}
 ${pkg.homepage}
 `.trim()
+const siteConfig = require('./src/config')
 
 // helper
 const isProd = process.env.NODE_ENV === 'production'
@@ -80,15 +81,17 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      // Configuration
       template: resolve('src', 'tpl.html'),
       filename: 'index.html',
-      favicon: require('./src/config').favicon || false,
-      minify: {
-        // https://github.com/kangax/html-minifier#options-quick-reference
-        removeComments: true,
-        collapseWhitespace: true
-      },
-      chunksSortMode: 'dependency'
+      minify: false,
+      chunksSortMode: 'dependency',
+      // Other custom metadata
+      title: siteConfig.blogTitle || '',
+      blogDescription: siteConfig.blogDescription || '',
+      blogAuthor: siteConfig.blogAuthor || '',
+      blogKeywords: siteConfig.blogKeywords || '',
+      favicon: siteConfig.favicon || false
     }),
     new ExtractTextPlugin({
       filename: isProd ? 'build.[chunkhash:5].css' : 'build.css',
