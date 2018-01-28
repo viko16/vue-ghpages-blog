@@ -5,7 +5,7 @@ module.exports = {
   blogTitle: 'Unknow Me',
   blogDescription: "Viko's Blog",
   blogAuthor: 'viko16',
-  blogKeywords: `Unknow Me, viko16, vue-ghpages-blog`,
+  blogKeywords: 'Unknow Me, viko16, vue-ghpages-blog, 博客, vue',
   favicon: './static/favicon.png',
 
   /**

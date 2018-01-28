@@ -3,6 +3,7 @@
     Copyright © {{ thisYear }} | Powered by
     <a
       href="https://github.com/viko16/vue-ghpages-blog"
+      rel="noopener"
       target="_blank">vue-ghpages-blog</a>
   </footer>
 </template>
