@@ -128,8 +128,33 @@ a
 
 .post-view
   margin 0 20px 50px
-  a:hover
-    border-bottom 1px dashed linkColor
+  a[href]
+    position relative
+    &:hover
+      border-bottom 1px dashed linkColor
+    // thanks longsien/BareCSS
+    // https://github.com/longsien/BareCSS/blob/v1.1.0/less/_tooltip.less
+    &:after
+      content attr(href)
+      position absolute
+      left 50%
+      top 0
+      visibility hidden
+      pointer-events none
+      transform translate(-50%, -95%)
+      transition all 0.1s ease-in-out
+      overflow visible
+      padding 0 10px
+      background #454f54
+      font-size 0.8em
+      border-radius 5px
+      color #ffffff
+      line-height 2
+      white-space nowrap
+      opacity 0.9
+    &:hover:after
+      visibility visible
+      transform translate(-50%, calc(-100% - 5px))
 
 .post-title
   line-height 1
