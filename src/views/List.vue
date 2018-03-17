@@ -1,11 +1,11 @@
 <template>
   <section class="list-view">
     <div
-      class="loading"
-      v-if="loading">loading..</div>
+      v-if="loading"
+      class="loading">loading..</div>
     <div
-      class="no-content"
-      v-else-if="filteredList.length === 0">nothing..</div>
+      v-else-if="filteredList.length === 0"
+      class="no-content">nothing..</div>
     <ol
       v-else
       class="list">
@@ -20,9 +20,9 @@
         </router-link>
         <br>
         <time
-          pubdate="pubdate"
           :datetime="date | formatDate"
           :title="date | formatDate"
+          pubdate="pubdate"
           class="item-date">{{ date | timeago }}</time>
       </li>
     </ol>

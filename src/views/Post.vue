@@ -4,9 +4,9 @@
     <h1 class="post-title">
       {{ title }}
       <time
-        pubdate="pubdate"
         :datetime="date | formatDate"
         :title="date | formatDate"
+        pubdate="pubdate"
         class="post-date">{{ date | timeago }}</time>
     </h1>
     <article

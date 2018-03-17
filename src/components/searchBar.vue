@@ -1,10 +1,10 @@
 <template>
   <input
+    ref="searchBar"
+    v-model="keyword"
     class="searchbar-input"
     placeholder="Search.."
     type="search"
-    ref="searchBar"
-    v-model="keyword"
     @click="selectSearchText"
     @keyup.esc="resetSearch">
 </template>
