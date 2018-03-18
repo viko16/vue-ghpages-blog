@@ -6,7 +6,7 @@ import Vue from 'vue'
 import { mount } from 'avoriaz'
 import _ from 'lodash'
 import sinon from 'sinon'
-import ListView from '@/views/List.vue'
+import ListView from '@/components/PageList.vue'
 import router from '@/router'
 
 Vue.config.productionTip = false
@@ -35,7 +35,7 @@ const mockData = [{
 describe('List.vue', function () {
   const getMockListView = mockData => {
     // https://vue-loader.vuejs.org/en/workflow/testing-with-mocks.html
-    const injector = require('!!vue-loader?inject!@/views/List.vue')
+    const injector = require('!!vue-loader?inject!@/components/PageList.vue')
     return injector({
       '../api': { getList: () => Promise.resolve(mockData) }
     })
@@ -151,7 +151,7 @@ describe('List.vue', function () {
   })
 
   it('should render "nothing" when api reject', async function () {
-    const injector = require('!!vue-loader?inject!@/views/List.vue')
+    const injector = require('!!vue-loader?inject!@/components/PageList.vue')
     const ListViewWithMock = injector({
       '../api': { getList: () => Promise.reject(new Error('test getList() error')) }
     })

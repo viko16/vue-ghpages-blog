@@ -34,7 +34,6 @@
   import conf from '../config'
 
   export default {
-    name: 'ListView',
 
     data () {
       return {

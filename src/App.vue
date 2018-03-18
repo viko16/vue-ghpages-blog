@@ -14,15 +14,15 @@
 
 <script>
   import conf from './config'
-  import footerBar from './components/footerBar.vue'
-  import searchBar from './components/searchBar.vue'
+  import FooterBar from './components/FooterBar.vue'
+  import SearchBar from './components/SearchBar.vue'
 
   export default {
     name: 'App',
 
     components: {
-      footerBar,
-      searchBar
+      FooterBar,
+      SearchBar
     },
 
     data () {
@@ -33,7 +33,7 @@
 
     computed: {
       isPageList () {
-        return this.$route.name === 'list'
+        return this.$route.name === 'page-list'
       }
     }
 

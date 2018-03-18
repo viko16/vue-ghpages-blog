@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import ListView from '../views/List.vue'
-import PostView from '../views/Post.vue'
+import PageList from './components/PageList.vue'
+import PagePost from './components/PagePost.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'list',
-    component: ListView
+    name: 'page-list',
+    component: PageList
   },
   {
     path: '/post/:hash',
-    name: 'post',
-    component: PostView
+    name: 'page-post',
+    component: PagePost
   }
 ]
 

@@ -23,7 +23,6 @@
   import marked from '../utils/render.js'
 
   export default {
-    name: 'PostView',
 
     data () {
       return {

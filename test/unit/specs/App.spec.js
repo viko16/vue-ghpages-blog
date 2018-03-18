@@ -6,7 +6,7 @@ import { mount } from 'avoriaz'
 import App from '@/App.vue'
 import router from '@/router'
 import conf from '@/config'
-import SearchBar from '@/components/searchBar.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
 describe('App.vue', function () {
   it('should mount correctly', function () {

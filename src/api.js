@@ -1,8 +1,8 @@
 import axios from 'axios'
 import 'es6-promise/auto'
 
-import conf from '../config'
-import { onlyTitle, onlyDate } from '../utils'
+import conf from './config'
+import { onlyTitle, onlyDate } from './utils'
 
 /**
  * Format GitHub Api url for content list
