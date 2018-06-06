@@ -27,6 +27,27 @@ export function getPostUrl (hash) {
   return `https://api.github.com/repos/${conf.repo}/git/blobs/${hash}`
 }
 
+/**
+ * Format the search file url
+ * @param {object} options 
+ */
+export function getSearchUrl (options) {
+  const { query, type } = options
+
+  // Not used next
+  delete options.query
+  delete options.type
+
+  const optionStr = Object.keys(options)
+    .reduce(
+      (str, key) => str += `+${key}:${options[key]}`,
+      `q=${query || ''}`
+    )
+
+  // @doc https://developer.github.com/v3/search/#search-code
+  return `https://api.github.com/search/${type}?${optionStr}`
+}
+
 export { axios as axiosInstance }
 
 // Cache processor
@@ -45,6 +66,17 @@ const Cache = {
   }
 }
 
+/**
+ * Parse the file
+ * @param {object} 
+ */
+const formatFile = ({name, sha, size}) => ({
+  title: onlyTitle(name),
+  date: onlyDate(name),
+  sha,
+  size
+})
+
 export default {
 
   getList () {
@@ -56,12 +88,7 @@ export default {
         .then(res => res.data)
         .then(arr => {
           // Data cleaning
-          const list = arr.map(({name, sha, size}) => ({
-            title: onlyTitle(name),
-            date: onlyDate(name),
-            sha,
-            size
-          }))
+          const list = arr.map(formatFile)
           // Save into cache
           Cache.set('list', list)
           // ..then return
@@ -88,6 +115,29 @@ export default {
           Cache.set(cacheKey, content)
           // ..then return
           return content
+        })
+    }
+  },
+
+  searchFile (query, type = 'code', extension = 'md') {
+    const searchOpts = {
+      query,
+      type,
+      extension,
+      repo: conf.repo,
+      path: conf.path
+    }
+    const cacheKey = `search.${query}`
+
+    if (Cache.has(cacheKey)) {
+      return Promise.resolve(Cache.get(cacheKey))
+    } else {
+      return axios.get(getSearchUrl(searchOpts))
+        .then(res => res.data)
+        .then(data => {
+          const result = data.items.map(formatFile)
+          Cache.set(cacheKey, result)
+          return result
         })
     }
   }

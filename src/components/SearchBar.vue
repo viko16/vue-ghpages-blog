@@ -6,20 +6,16 @@
     placeholder="Search.."
     type="search"
     @click="selectSearchText"
-    @keyup.esc="resetSearch">
+    @keyup.esc="resetSearch"
+    @keyup.enter="updateQuery">
 </template>
 
 <script>
   export default {
-
     data () {
       return {
         keyword: ''
       }
-    },
-
-    watch: {
-      'keyword': 'updateQuery'
     },
 
     created () {
@@ -31,9 +27,11 @@
         this.keyword = ''
         this.$refs.searchBar.blur()
       },
+
       selectSearchText () {
         this.$refs.searchBar.select()
       },
+
       updateQuery () {
         if (this.keyword) {
           this.$router.push({name: 'page-list', query: { q: this.keyword }})

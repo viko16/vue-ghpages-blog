@@ -4,13 +4,13 @@
       v-if="loading"
       class="loading">loading..</div>
     <div
-      v-else-if="filteredList.length === 0"
+      v-else-if="lists.length === 0"
       class="no-content">nothing..</div>
     <ol
       v-else
       class="list">
       <li
-        v-for="{ title, sha, date } in filteredList"
+        v-for="{ title, sha, date } in lists"
         :key="sha"
         class="list-item">
         <router-link
@@ -42,29 +42,25 @@
       }
     },
 
-    computed: {
-      filteredList () {
-        let keyword = ''
-        if (this.$route) {
-          keyword = (this.$route.query.q || '').toLowerCase()
-        }
-        // Filter by title, Order by publish date, desc
-        return this.lists
-          .filter(item => (item.title.toLowerCase().indexOf(keyword) !== -1))
-          .sort((itemA, itemB) => (new Date(itemB.date) - new Date(itemA.date)))
-      }
-    },
-
     watch: {
-      '$route': 'loadList'
+      '$route': 'getList'
     },
 
     mounted () {
       window.document.title = conf.blogTitle
-      this.loadList()
+      this.getList()
     },
 
     methods: {
+      getList () {
+        const { loadList, search, $route: { query } } = this
+        if (query.q) {
+          search(query.q)
+        } else {
+          loadList()
+        }
+      },
+
       loadList () {
         this.loading = true
         api.getList()
@@ -75,6 +71,17 @@
             this.loading = false
             // eslint-disable-next-line no-console
             console.info('[getList]', err)
+          })
+      },
+
+      search (keyword) {
+        this.loading = true
+        api.searchFile(keyword)
+          .then(lists => {
+            // eslint-disable-next-line no-console
+            console.log(lists)
+            this.loading = false
+            this.lists = lists
           })
       }
     }
