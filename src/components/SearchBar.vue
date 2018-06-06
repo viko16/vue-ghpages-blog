@@ -36,9 +36,9 @@
       },
       updateQuery () {
         if (this.keyword) {
-          this.$router.push({name: 'list', query: { q: this.keyword }})
+          this.$router.push({name: 'page-list', query: { q: this.keyword }})
         } else {
-          this.$router.push({name: 'list', query: null})
+          this.$router.push({name: 'page-list', query: null})
         }
       }
     }
