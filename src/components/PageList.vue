@@ -4,13 +4,13 @@
       v-if="loading"
       class="loading">loading..</div>
     <div
-      v-else-if="lists.length === 0"
+      v-else-if="orderedList.length === 0"
       class="no-content">nothing..</div>
     <ol
       v-else
       class="list">
       <li
-        v-for="{ title, sha, date } in lists"
+        v-for="{ title, sha, date } in orderedList"
         :key="sha"
         class="list-item">
         <router-link
@@ -42,47 +42,37 @@
       }
     },
 
-    watch: {
-      '$route': 'getList'
+    computed: {
+      orderedList () {
+        // Filter by title, Order by publish date, desc
+        return this.lists
+          .slice()
+          .sort((itemA, itemB) => (new Date(itemB.date) - new Date(itemA.date)))
+      }
     },
 
-    mounted () {
+    watch: {
+      '$route': 'loadList'
+    },
+
+    async mounted () {
       window.document.title = conf.blogTitle
-      this.getList()
+      await this.loadList()
     },
 
     methods: {
-      getList () {
-        const { loadList, search, $route: { query } } = this
-        if (query.q) {
-          search(query.q)
-        } else {
-          loadList()
-        }
-      },
-
-      loadList () {
+      async loadList () {
+        const { $route: { query } } = this
         this.loading = true
-        api.getList()
-          .then(lists => {
-            this.loading = false
-            this.lists = lists
-          }, err => {
+       
+        this.lists = await (query.q ? api.searchFile : api.getList)(query.q)
+          .catch(err => {
             this.loading = false
             // eslint-disable-next-line no-console
-            console.info('[getList]', err)
+            return console.info('[loadList]', err)
           })
-      },
-
-      search (keyword) {
-        this.loading = true
-        api.searchFile(keyword)
-          .then(lists => {
-            // eslint-disable-next-line no-console
-            console.log(lists)
-            this.loading = false
-            this.lists = lists
-          })
+        
+        this.loading = false
       }
     }
 
