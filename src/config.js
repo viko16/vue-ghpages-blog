@@ -7,6 +7,7 @@ module.exports = {
   blogAuthor: 'viko16',
   blogKeywords: 'Unknow Me, viko16, vue-ghpages-blog, 博客, vue',
   favicon: './static/favicon.png',
+  base: '/vue-ghpages-blog/',
 
   /**
    * API

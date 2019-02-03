@@ -21,7 +21,7 @@ const config = {
   entry: './src/main.js',
   output: {
     path: resolve('dist'),
-    publicPath: '/',
+    publicPath: siteConfig.base,
     filename: isProd ? 'build.[chunkhash:5].js' : 'build.js'
   },
   resolve: {
@@ -91,7 +91,8 @@ const config = {
       blogDescription: siteConfig.blogDescription || '',
       blogAuthor: siteConfig.blogAuthor || '',
       blogKeywords: siteConfig.blogKeywords || '',
-      favicon: siteConfig.favicon || false
+      favicon: siteConfig.favicon || false,
+      base: siteConfig.base || '/'
     }),
     new ExtractTextPlugin({
       filename: isProd ? 'build.[chunkhash:5].css' : 'build.css',
