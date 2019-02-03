@@ -16,6 +16,8 @@
 
 ![Post Screenshots](https://cloud.githubusercontent.com/assets/5064777/19349059/a815395c-9183-11e6-97c3-56514acf0f1d.png)
 
+Demo: https://viko16.github.io/vue-ghpages-blog/
+
 ## Features
 
 - Vue 2 / Vue-router / axios
